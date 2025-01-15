@@ -12,7 +12,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   trailingSlash: false,
   // title: 'My Site',
-  title: 'Zhiwen',
+  title: 'Zhao ZhiWen',
   tagline: 'Dinosaurs are cool',
   // favicon: 'img/favicon.ico',
   favicon: 'img/my-logo.svg',
@@ -90,7 +90,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Docs',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
