@@ -29,7 +29,7 @@ function HomepageHeader() {
 }
 
 function Index() {
-    return <Redirect to="/docs/category/algorithm" />;
+    return <Redirect to="/docs/category/算法" />;
 }
 
 export default Index;

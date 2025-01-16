@@ -1,5 +1,7 @@
 # LeetCode Hot100
 
+LeetCode 热题100，解题记录
+
 ## 哈希
 
 ### 001 两数之和
