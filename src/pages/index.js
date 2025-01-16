@@ -29,7 +29,7 @@ function HomepageHeader() {
 }
 
 function Index() {
-    return <Redirect to="/docs/intro" />;
+    return <Redirect to="/docs/category/algorithm" />;
 }
 
 export default Index;
