@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmydocusaurus=self.webpackChunkmydocusaurus||[]).push([[2095],{5092:a=>{a.exports=JSON.parse('{"categoryGeneratedIndex":{"title":"Algorithm","slug":"/category/algorithm","permalink":"/docs/category/algorithm","sidebar":"tutorialSidebar","navigation":{"next":{"title":"Java-API","permalink":"/docs/Algorithm/Java_API"}}}}')}}]);
