@@ -21,3 +21,84 @@
   align-items: center;
   justify-content: center;
 }
+/*下面是我自己写的，主要是服务于主页的页面的，对应index.js
+/* 添加以下全局样式 */
+html.home-page,
+body.home-page {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* 禁止全局滚动 */
+}
+
+.cleanLayout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--ifm-background-color); /* 使用主题背景色变量 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+
+.logoContainer {
+  text-align: center;
+  width: 100%; /* 确保容器占满可用宽度 */
+  max-width: 90vw; /* 限制最大宽度 */
+  max-height: 90vh; /* 限制最大高度 */
+  display: flex;
+  flex-direction: column; /* 垂直排列内容 */
+  align-items: center; /* 水平居中 */
+  justify-content: center; /* 垂直居中 */
+  margin: 0 auto; /* 确保内容居中 */
+}
+
+
+.siteTitle {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-top: 1.5rem;
+  color: var(--ifm-heading-color); /* 使用主题标题颜色变量 */
+  line-height: 1.2;
+}
+
+.logoImage {
+  width: min(200px, 40vw); /* 响应式尺寸 */
+  height: auto; /* 保证图片比例 */
+  display: block; /* 使图片作为块级元素 */
+  margin: 0 auto; /* 图片水平居中 */
+}
+
+
+/* 移动端优化 */
+@media (max-width: 480px) {
+  .logoContainer {
+    padding: 10px;
+  }
+
+  .siteTitle {
+    margin-top: 1rem;
+    font-size: 1.8rem;
+  }
+}
+
+/* 粗箭头样式 */
+.boldArrowLink {
+  display: block;
+  margin-top: 0rem;
+}
+
+.boldArrowLink svg {
+  width: 60px;  /* 增大尺寸 */
+  height: 60px;
+  color: var(--ifm-color-primary); /* 关键修改点 */
+  display: block; /* 新增：解决SVG默认inline间隙 */
+}
+
+/* 取消所有动画效果 */
+/* 无 transition 属性 */
+/* 无 :hover 状态变化 */
+

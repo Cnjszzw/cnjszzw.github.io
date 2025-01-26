@@ -12,7 +12,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   trailingSlash: false,
   // title: 'My Site',
-  title: 'Zhao ZhiWen',
+  title: 'INFO.CENTER',
   tagline: 'Dinosaurs are cool',
   // favicon: 'img/favicon.ico',
   favicon: 'img/my-logo.svg',
@@ -92,7 +92,8 @@ const config = {
             position: 'left',
             label: '文档',
           },
-          {to: '/blog', label: '博客', position: 'left'},
+          //暂时移除blog的路由
+          //{to: '/blog', label: '博客', position: 'left'},
           {
             href: 'https://github.com/Cnjszzw',
             label: 'GitHub',
