@@ -1,6 +1,6 @@
 # LeetCode Hot100
 
-LeetCode 热题100，解题记录
+LeetCode 热题 100，解题记录
 
 ## 哈希
 
@@ -102,7 +102,7 @@ class Solution {
 
 ## 双指针
 
-### 004 移动零
+### 001 移动零
 
 ```java
 //283. 移动零 https://leetcode.cn/problems/move-zeroes/
@@ -127,7 +127,7 @@ class Solution {
 }
 ```
 
-### 005 盛水最多的容器
+### 002 盛水最多的容器
 
 ```java
 // 11. 盛最多水的容器 https://leetcode.cn/problems/container-with-most-water/
@@ -175,6 +175,42 @@ class Solution {
 
 
 ## 动态规划
+
+### 001 [最长有效括号](https://leetcode.cn/problems/longest-valid-parentheses/)
+
+```java
+//32. 最长有效括号
+//解题链接：【LeetCode每日打卡.32.最长有效括号】 https://www.bilibili.com/video/BV1Ct4y197M3/?share_source=copy_web&vd_source=f7f48f1ed79263bbbc17c452084e9965
+
+class Solution {
+    public int longestValidParentheses(String s) {
+        char[] array = s.toCharArray();
+        int[] dp = new int[array.length];
+        Arrays.fill(dp,0);
+        int length = dp.length;
+        if(length == 1 || length == 0){
+            return 0;
+        }
+        int res = 0;
+        for(int i = 1 ; i < length ; i++){
+            if(array[i] == ')'){
+                if(array[i - dp[i-1] - 1] == '('){
+                    dp[i] = 2 + dp[i-1];
+                    if(i - dp[i-1] - 2 >= 0){
+                        dp[i] += dp[i - dp[i-1] - 2];
+                    }
+                }
+            }
+            res = Math.max(res,dp[i]);
+        }
+        return res;
+    }
+}
+```
+
+
+
+
 
 **预备知识**
 
@@ -260,4 +296,63 @@ for(集合的元素集，类似子节点的个数)
 
 }
 ```
+
+## 单调栈
+
+单调栈，顾名思义，是一个栈, 其次，他是单调的（单调底层，和单调递减），这个栈记录了之前遍历过的所有元素，相当于是空间换时间，这种单调栈，特别适合以下场景：
+
+```java
+（1）
+想找到某一个元素，右边/左边，第一个比本元素大/小的元素的位置
+典型的例子就是每日温度这个题目：
+https://leetcode.cn/problems/iIQa4I/description/
+
+class Solution {
+        public int[] dailyTemperatures(int[] temperatures) {
+            Stack<Integer> stack = new Stack();
+            int[] res = new int[temperatures.length];
+            Arrays.fill(res,0);
+            if(temperatures.length <=0){
+                return res;
+            }
+            stack.push(0);
+            int length = temperatures.length;
+            for(int i = 1 ; i < length ; i++){
+                if(temperatures[i] <= temperatures[stack.peek()]){
+                    stack.push(i);
+                }else{
+                    while(!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]){
+                        res[stack.peek()] = i - stack.peek();
+                        stack.pop();
+                    }
+                    stack.push(i);
+                }
+            }
+            return res;
+        }
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

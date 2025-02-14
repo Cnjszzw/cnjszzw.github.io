@@ -74,6 +74,26 @@ const config = {
     ],
   ],
 
+  //我自己添加的
+  themes: [
+    // ... Your other themes.
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        // ... Your options.
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+
+        // For Docs using Chinese, it is recomended to set:
+        language: ["en", "zh"],
+
+        // If you're using `noIndex: true`, set `forceIgnoreNoIndex` to enable local index:
+        // forceIgnoreNoIndex: true,
+      }),
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -94,6 +114,10 @@ const config = {
           },
           //暂时移除blog的路由
           //{to: '/blog', label: '博客', position: 'left'},
+          {
+            type: 'search',
+            position: 'right',  // 搜索框将显示在左侧
+          },
           {
             href: 'https://github.com/Cnjszzw',
             label: 'GitHub',

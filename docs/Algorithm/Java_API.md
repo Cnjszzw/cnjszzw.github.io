@@ -205,6 +205,8 @@ public class Main {
         // 初始化固定大小的空数组
         int[] fixedSizeIntArray = new int[10];
         String[] fixedSizeStringArray = new String[10];
+        //如何进行填充呢？用fill,比如将int类型的数组填充为0
+        Arrays.fill(fixedSizeIntArray,0)
         
         // 初始化大小为0的空数组
         int[] zeroSizeIntArray = new int[0];
