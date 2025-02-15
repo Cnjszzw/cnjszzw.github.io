@@ -97,6 +97,29 @@ const config = {
   plugins: [
     'docusaurus-plugin-image-zoom', // can also just be 'image-zoom'
     // ...other plugins
+    [
+      '@docusaurus/plugin-pwa',
+      {
+        debug: true, // 调试模式（可选）
+        offlineModeActivationStrategies: [
+          'appInstalled', // 优先激活策略
+          'standalone',
+          'queryString',
+        ],
+        pwaHead: [ // PWA meta 标签配置
+          {
+            tagName: 'link',
+            rel: 'manifest',
+            href: '/manifest.json', // 指向你的 manifest 文件
+          },
+          {
+            tagName: 'meta',
+            name: 'theme-color',
+            content: 'rgb(37, 194, 160)', // 设置主题色
+          },
+        ],
+      },
+    ],
   ],
 
   themeConfig:

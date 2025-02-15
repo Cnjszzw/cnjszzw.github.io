@@ -23,7 +23,8 @@
     "docusaurus-plugin-image-zoom": "^3.0.1",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "workbox-webpack-plugin": "^7.3.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.7.0",
