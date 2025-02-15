@@ -71,7 +71,7 @@ export default function Home() {
           <h1 className={styles.siteTitle}>{siteConfig.title}</h1>
           {/* 粗箭头链接 */}
             <Link
-              to="/docs/Intro"
+              to="/docs/defaultDoc/Intro"
               className={styles.boldArrowLink}
               aria-label="前往介绍页面"
             >

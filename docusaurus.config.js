@@ -46,6 +46,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: 'docs',
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -136,9 +137,15 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'defaultDoc',
             position: 'left',
-            label: '文档',
+            label: '文档📒',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'musicDoc',
+            position: 'left',
+            label: '音乐🎵',
           },
           //暂时移除blog的路由
           //{to: '/blog', label: '博客', position: 'left'},
