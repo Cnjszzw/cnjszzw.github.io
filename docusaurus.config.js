@@ -123,6 +123,18 @@ const config = {
     ],
   ],
 
+  //chatbox的配置
+  scripts: [
+    {
+      src: "https://app.qanswer.ai/integration/widget.js",
+      async: true,
+      'data-name': "InfoMaster",
+      'data-owner': "赵志文",
+      'data-type': "text",
+      'data-frontend': "https://app.qanswer.ai/",
+    },
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
