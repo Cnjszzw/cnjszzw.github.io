@@ -156,7 +156,7 @@ const config = {
           },
           {
             href: 'https://cnjszzw.github.io/cv/zh-cn',
-            label: '简历',
+            label: 'OhMyCV',
             position: 'right',
           },
           {
