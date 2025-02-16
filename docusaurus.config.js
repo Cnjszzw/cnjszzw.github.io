@@ -155,6 +155,11 @@ const config = {
             position: 'right',  // 搜索框将显示在左侧
           },
           {
+            href: 'https://cnjszzw.github.io/cv/zh-cn',
+            label: '简历',
+            position: 'right',
+          },
+          {
             href: 'https://github.com/Cnjszzw',
             label: 'GitHub',
             position: 'right',
