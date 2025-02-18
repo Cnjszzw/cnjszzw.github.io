@@ -10,7 +10,7 @@ function JsonJsOutput() {
     const handleRun = () => {
         try {
             const parsedJson = JSON.parse(jsonInput);
-            const func = new Function('data', jsCode);
+            const func = new Function('input', jsCode); // 修改参数名为 input
             const result = func(parsedJson);
             setOutput(JSON.stringify(result, null, 2));
         } catch (error) {
@@ -65,208 +65,192 @@ function JsonJsOutput() {
         return value;
     };
 
-    return (
-        <Layout title="JSON 和 JS 处理器" description="交互式 JSON 和 JS 处理工具">
-            <div
-                style={{
-                    padding: '20px',
-                    width: '100%',
-                    margin: '0 auto',
-                    boxSizing: 'border-box',
-                }}
-            >
-                {/* 主容器 */}
-                <div style={{ display: 'flex', gap: '2%' }}>
-                    {/* 左边：JSON 输入 */}
-                    <div style={{ flex: 1, maxWidth: '32%' }}> {/* 设置最大宽度 */}
-                        <div
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                marginTop: '20px',
-                                marginBottom: '5px',
-                            }}
-                        >
-                            <h3 style={{ margin: 0 }}>输入 JSON</h3>
-                            <button
-                                onClick={handlePasteJson}
-                                style={{
-                                    marginLeft: '10px',
-                                    padding: '2px 8px',
-                                    fontSize: '12px',
-                                    background: '#28a745',
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '5px',
-                                    cursor: 'pointer',
-                                }}
-                            >
-                                粘贴
-                            </button>
-                            <button
-                                onClick={handleClearJson}
-                                style={{
-                                    marginLeft: '10px',
-                                    padding: '2px 8px',
-                                    fontSize: '12px',
-                                    background: '#dc3545',
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '5px',
-                                    cursor: 'pointer',
-                                }}
-                            >
-                                清除
-                            </button>
-                        </div>
-                        <pre
-                            contentEditable
-                            suppressContentEditableWarning
-                            onInput={(e) => {
-                                const value = e.target.innerText;
-                                setJsonInput(formatJsonInput(value));
-                                e.target.innerText = formatJsonInput(value);
-                            }}
-                            style={{
-                                background: '#f4f4f4',
-                                padding: '10px',
-                                borderRadius: '5px',
-                                fontFamily: 'monospace',
-                                minHeight: '300px',
-                                overflowY: 'auto',
-                                outline: 'none',
-                                width: '100%',
-                                whiteSpace: 'pre-wrap', // 启用自动换行
-                                wordBreak: 'break-word', // 强制长单词换行
-                            }}
-                        >
-                            {formatJsonInput(jsonInput)}
-                        </pre>
-                    </div>
+    // 加载模板代码
+    const handleLoadTemplate = () => {
+        const templateCode = `return (function(input) {
+    try {
+        // 检查输入是否包含 RespDatas 字段
+        if (!input || typeof input.RespDatas !== "string") {
+            throw new Error("输入数据中缺少 RespDatas 字段或其值不是字符串");
+        }
 
-                    {/* 中间：JS 代码输入 */}
-                    <div style={{ flex: 1, maxWidth: '32%' }}> {/* 设置最大宽度 */}
-                        <div
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                marginTop: '20px',
-                                marginBottom: '5px',
-                            }}
-                        >
-                            <h3 style={{ margin: 0 }}>输入 JS 代码</h3>
+        // 解析 RespDatas 字段为 JSON 对象
+        const respDatas = JSON.parse(input.RespDatas);
+
+        // 返回解析后的结果
+        return respDatas;
+    } catch (error) {
+        // 捕获错误并返回友好的错误信息
+        throw new Error(\`处理失败: \${error.message}\`);
+    }
+})(input);`;
+        setJsCode(templateCode);
+    };
+
+    return (
+        <Layout>
+            {/* 主容器 */}
+            <div style={{ display: 'flex', gap: '20px', padding: '20px' }}>
+                {/* 左边：JSON 输入 */}
+                <div style={{ flex: 1, maxWidth: '33%' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                        <h3 style={{ margin: '0' }}>输入 JSON</h3>
+                        <div style={{ display: 'flex', gap: '10px' }}>
                             <button
-                                onClick={handlePasteJs}
                                 style={{
-                                    marginLeft: '10px',
-                                    padding: '2px 8px',
-                                    fontSize: '12px',
-                                    background: '#28a745',
-                                    color: 'white',
+                                    padding: '5px 10px',
+                                    background: '#007bff',
+                                    color: '#fff',
                                     border: 'none',
                                     borderRadius: '5px',
                                     cursor: 'pointer',
                                 }}
+                                onClick={handlePasteJson}
                             >
                                 粘贴
                             </button>
                             <button
-                                onClick={handleClearJs}
                                 style={{
-                                    marginLeft: '10px',
-                                    padding: '2px 8px',
-                                    fontSize: '12px',
+                                    padding: '5px 10px',
                                     background: '#dc3545',
-                                    color: 'white',
+                                    color: '#fff',
                                     border: 'none',
                                     borderRadius: '5px',
                                     cursor: 'pointer',
                                 }}
+                                onClick={handleClearJson}
                             >
                                 清除
                             </button>
                         </div>
-                        <div style={{ position: 'relative' }}>
-                            <pre
-                                contentEditable
-                                suppressContentEditableWarning
-                                onInput={(e) => {
-                                    const value = e.target.innerText;
-                                    setJsCode(formatJsCode(value));
-                                    e.target.innerText = formatJsCode(value);
-                                }}
-                                style={{
-                                    background: '#f4f4f4',
-                                    padding: '10px',
-                                    paddingBottom: '50px', // 为按钮留出足够空间
-                                    borderRadius: '5px',
-                                    fontFamily: 'monospace',
-                                    minHeight: '300px',
-                                    overflowY: 'auto',
-                                    outline: 'none',
-                                    width: '100%',
-                                    whiteSpace: 'pre-wrap', // 启用自动换行
-                                    wordBreak: 'break-word', // 强制长单词换行
-                                }}
-                            >
-                                {formatJsCode(jsCode)}
-                            </pre>
+                    </div>
+                    <div
+                        contentEditable
+                        onInput={(e) => {
+                            const value = e.target.innerText;
+                            setJsonInput(formatJsonInput(value));
+                            e.target.innerText = formatJsonInput(value);
+                        }}
+                        style={{
+                            background: '#f4f4f4',
+                            padding: '10px',
+                            borderRadius: '5px',
+                            fontFamily: 'monospace',
+                            minHeight: '300px',
+                            overflowY: 'auto',
+                            outline: 'none',
+                            width: '100%',
+                            whiteSpace: 'pre-wrap',
+                            wordBreak: 'break-word',
+                        }}
+                    >
+                        {formatJsonInput(jsonInput)}
+                    </div>
+                </div>
+
+                {/* 中间：JS 代码输入 */}
+                <div style={{ flex: 1, maxWidth: '33%' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                        <h3 style={{ margin: '0' }}>输入 JS 代码</h3>
+                        <div style={{display: 'flex', gap: '10px'}}>
                             <button
-                                onClick={handleRun}
                                 style={{
-                                    position: 'absolute',
-                                    bottom: '10px',
-                                    right: '10px',
-                                    padding: '2px 8px',
-                                    fontSize: '14px',
+                                    padding: '5px 10px',
                                     background: '#007bff',
-                                    color: 'white',
+                                    color: '#fff',
                                     border: 'none',
                                     borderRadius: '5px',
                                     cursor: 'pointer',
-                                    lineHeight: '1',
-                                    height: '30px',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
                                 }}
+                                onClick={handleRun}
                             >
                                 运行
                             </button>
+                            <button
+                                style={{
+                                    padding: '5px 10px',
+                                    background: '#28a745',
+                                    color: '#fff',
+                                    border: 'none',
+                                    borderRadius: '5px',
+                                    cursor: 'pointer',
+                                }}
+                                onClick={handleLoadTemplate}
+                            >
+                                模板
+                            </button>
+                            <button
+                                style={{
+                                    padding: '5px 10px',
+                                    background: '#007bff',
+                                    color: '#fff',
+                                    border: 'none',
+                                    borderRadius: '5px',
+                                    cursor: 'pointer',
+                                }}
+                                onClick={handlePasteJs}
+                            >
+                                粘贴
+                            </button>
+                            <button
+                                style={{
+                                    padding: '5px 10px',
+                                    background: '#dc3545',
+                                    color: '#fff',
+                                    border: 'none',
+                                    borderRadius: '5px',
+                                    cursor: 'pointer',
+                                }}
+                                onClick={handleClearJs}
+                            >
+                                清除
+                            </button>
                         </div>
                     </div>
+                    <div
+                        contentEditable
+                        onInput={(e) => {
+                            const value = e.target.innerText;
+                            setJsCode(formatJsCode(value));
+                            e.target.innerText = formatJsCode(value);
+                        }}
+                        style={{
+                            background: '#f4f4f4',
+                            padding: '10px',
+                            paddingBottom: '50px',
+                            borderRadius: '5px',
+                            fontFamily: 'monospace',
+                            minHeight: '300px',
+                            overflowY: 'auto',
+                            outline: 'none',
+                            width: '100%',
+                            whiteSpace: 'pre-wrap',
+                            wordBreak: 'break-word',
+                        }}
+                    >
+                        {formatJsCode(jsCode)}
+                    </div>
+                </div>
 
-                    {/* 右边：输出 */}
-                    <div style={{ flex: 1, maxWidth: '32%' }}> {/* 设置最大宽度 */}
-                        <div
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                marginTop: '20px',
-                                marginBottom: '5px',
-                            }}
-                        >
-                            <h3 style={{ margin: 0 }}>输出</h3>
-                        </div>
-                        <div style={{ position: 'relative' }}>
-                            <pre
-                                style={{
-                                    background: '#f4f4f4',
-                                    padding: '10px',
-                                    paddingBottom: '50px', // 为保持一致性，添加底部内边距
-                                    borderRadius: '5px',
-                                    fontFamily: 'monospace',
-                                    minHeight: '300px',
-                                    overflowY: 'auto',
-                                    outline: 'none',
-                                    width: '100%',
-                                    whiteSpace: 'pre-wrap', // 启用自动换行
-                                    wordBreak: 'break-word', // 强制长单词换行
-                                }}
-                            >
-                                <code className="language-json">{output}</code>
-                            </pre>
-                        </div>
+                {/* 右边：输出 */}
+                <div style={{flex: 1, maxWidth: '33%'}}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                        <h3 style={{ margin: '0' }}>输出</h3>
+                    </div>
+                    <div
+                        style={{
+                            background: '#f4f4f4',
+                            padding: '10px',
+                            borderRadius: '5px',
+                            fontFamily: 'monospace',
+                            minHeight: '300px',
+                            overflowY: 'auto',
+                            outline: 'none',
+                            whiteSpace: 'pre-wrap',
+                            wordBreak: 'break-word',
+                        }}
+                    >
+                        {output}
                     </div>
                 </div>
             </div>
