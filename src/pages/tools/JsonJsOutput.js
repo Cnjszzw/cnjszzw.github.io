@@ -40,6 +40,16 @@ function JsonJsOutput() {
         }
     };
 
+    // 清空 JSON 输入框
+    const handleClearJson = () => {
+        setJsonInput('');
+    };
+
+    // 清空 JS 输入框
+    const handleClearJs = () => {
+        setJsCode('');
+    };
+
     // 格式化 JSON 输入
     const formatJsonInput = (value) => {
         try {
@@ -68,7 +78,7 @@ function JsonJsOutput() {
                 {/* 主容器 */}
                 <div style={{ display: 'flex', gap: '2%' }}>
                     {/* 左边：JSON 输入 */}
-                    <div style={{ flex: 1 }}>
+                    <div style={{ flex: 1, maxWidth: '32%' }}> {/* 设置最大宽度 */}
                         <div
                             style={{
                                 display: 'flex',
@@ -93,6 +103,21 @@ function JsonJsOutput() {
                             >
                                 粘贴
                             </button>
+                            <button
+                                onClick={handleClearJson}
+                                style={{
+                                    marginLeft: '10px',
+                                    padding: '2px 8px',
+                                    fontSize: '12px',
+                                    background: '#dc3545',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '5px',
+                                    cursor: 'pointer',
+                                }}
+                            >
+                                清除
+                            </button>
                         </div>
                         <pre
                             contentEditable
@@ -111,14 +136,16 @@ function JsonJsOutput() {
                                 overflowY: 'auto',
                                 outline: 'none',
                                 width: '100%',
+                                whiteSpace: 'pre-wrap', // 启用自动换行
+                                wordBreak: 'break-word', // 强制长单词换行
                             }}
                         >
-              {formatJsonInput(jsonInput) || '// 在这里输入 JSON...'}
-            </pre>
+                            {formatJsonInput(jsonInput)}
+                        </pre>
                     </div>
 
                     {/* 中间：JS 代码输入 */}
-                    <div style={{ flex: 1 }}>
+                    <div style={{ flex: 1, maxWidth: '32%' }}> {/* 设置最大宽度 */}
                         <div
                             style={{
                                 display: 'flex',
@@ -143,32 +170,47 @@ function JsonJsOutput() {
                             >
                                 粘贴
                             </button>
+                            <button
+                                onClick={handleClearJs}
+                                style={{
+                                    marginLeft: '10px',
+                                    padding: '2px 8px',
+                                    fontSize: '12px',
+                                    background: '#dc3545',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '5px',
+                                    cursor: 'pointer',
+                                }}
+                            >
+                                清除
+                            </button>
                         </div>
-                        {/* 使用相对定位包裹编辑区域，方便放置内部按钮 */}
                         <div style={{ position: 'relative' }}>
-              <pre
-                  contentEditable
-                  suppressContentEditableWarning
-                  onInput={(e) => {
-                      const value = e.target.innerText;
-                      setJsCode(formatJsCode(value));
-                      e.target.innerText = formatJsCode(value);
-                  }}
-                  style={{
-                      background: '#f4f4f4',
-                      padding: '10px',
-                      paddingBottom: '50px', // 为按钮留出足够空间
-                      borderRadius: '5px',
-                      fontFamily: 'monospace',
-                      minHeight: '300px',
-                      overflowY: 'auto',
-                      outline: 'none',
-                      width: '100%',
-                  }}
-              >
-                {formatJsCode(jsCode) || '// 在这里输入 JavaScript 代码...'}
-              </pre>
-                            {/* 绝对定位按钮，放在输入区域右下角 */}
+                            <pre
+                                contentEditable
+                                suppressContentEditableWarning
+                                onInput={(e) => {
+                                    const value = e.target.innerText;
+                                    setJsCode(formatJsCode(value));
+                                    e.target.innerText = formatJsCode(value);
+                                }}
+                                style={{
+                                    background: '#f4f4f4',
+                                    padding: '10px',
+                                    paddingBottom: '50px', // 为按钮留出足够空间
+                                    borderRadius: '5px',
+                                    fontFamily: 'monospace',
+                                    minHeight: '300px',
+                                    overflowY: 'auto',
+                                    outline: 'none',
+                                    width: '100%',
+                                    whiteSpace: 'pre-wrap', // 启用自动换行
+                                    wordBreak: 'break-word', // 强制长单词换行
+                                }}
+                            >
+                                {formatJsCode(jsCode)}
+                            </pre>
                             <button
                                 onClick={handleRun}
                                 style={{
@@ -195,24 +237,7 @@ function JsonJsOutput() {
                     </div>
 
                     {/* 右边：输出 */}
-            {/*        <div style={{ flex: 1 }}>*/}
-            {/*            <h3 style={{ marginTop: '20px' }}>输出</h3>*/}
-            {/*            <pre*/}
-            {/*                style={{*/}
-            {/*                    background: '#f4f4f4',*/}
-            {/*                    padding: '10px',*/}
-            {/*                    borderRadius: '5px',*/}
-            {/*                    fontFamily: 'monospace',*/}
-            {/*                    minHeight: '300px',*/}
-            {/*                    overflowY: 'auto',*/}
-            {/*                    width: '100%',*/}
-            {/*                }}*/}
-            {/*            >*/}
-            {/*  <code className="language-json">{output || '// 等待运行...'}</code>*/}
-            {/*</pre>*/}
-            {/*        </div>*/}
-                    {/* 右边：输出 */}
-                    <div style={{ flex: 1 }}>
+                    <div style={{ flex: 1, maxWidth: '32%' }}> {/* 设置最大宽度 */}
                         <div
                             style={{
                                 display: 'flex',
@@ -223,23 +248,24 @@ function JsonJsOutput() {
                         >
                             <h3 style={{ margin: 0 }}>输出</h3>
                         </div>
-                        {/* 使用相对定位包裹编辑区域，方便未来扩展 */}
                         <div style={{ position: 'relative' }}>
-        <pre
-            style={{
-                background: '#f4f4f4',
-                padding: '10px',
-                paddingBottom: '50px', // 为保持一致性，添加底部内边距
-                borderRadius: '5px',
-                fontFamily: 'monospace',
-                minHeight: '300px',
-                overflowY: 'auto',
-                outline: 'none',
-                width: '100%',
-            }}
-        >
-            <code className="language-json">{output || '// 等待运行...'}</code>
-        </pre>
+                            <pre
+                                style={{
+                                    background: '#f4f4f4',
+                                    padding: '10px',
+                                    paddingBottom: '50px', // 为保持一致性，添加底部内边距
+                                    borderRadius: '5px',
+                                    fontFamily: 'monospace',
+                                    minHeight: '300px',
+                                    overflowY: 'auto',
+                                    outline: 'none',
+                                    width: '100%',
+                                    whiteSpace: 'pre-wrap', // 启用自动换行
+                                    wordBreak: 'break-word', // 强制长单词换行
+                                }}
+                            >
+                                <code className="language-json">{output}</code>
+                            </pre>
                         </div>
                     </div>
                 </div>
