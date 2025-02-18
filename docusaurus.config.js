@@ -148,6 +148,11 @@ const config = {
             position: 'left',
             label: '音乐🎵',
           },
+          {
+            to: '/tools/JsonJsOutput', // 路由路径
+            label: '工具🔨', // 标签名称
+            position: 'left', // 标签位置
+          },
           //暂时移除blog的路由
           //{to: '/blog', label: '博客', position: 'left'},
           {
