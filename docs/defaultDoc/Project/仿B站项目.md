@@ -1,5 +1,179 @@
 # 仿B站项目
 
+## 一.文件断点续传
+
+**可能涉及的问题**
+
+- 你这个过程中如何判断这个文件是否已经上传了？A：前端传入md5，后端根据md5查询数据库，看是否存在
+
+- 在这个过程中，压测过吗？A：这个真的无解，目前还有bug，正常流程都不行，别谈压测
+
+- 假如FastDfs是集群，如何解决过程中文件分散存储的问题？A：面试官给了个思路不错，nginx判断ip，同一个ip文件存到同一个机器
+
+- Q：在这个过程中Redis是怎么用的,作用是什么？
+
+  A：主要是用来暂存过程中文件的路径和上传的状态，一方面是方便后端查询，第二个方面断点续传，前端可以从后端redis查询需要从哪里进行重新上传，不用redis，前端就需要缓存这些所有信息，并且传递给后端，前端比较难处理。
+
+**问题以及可能的改进**
+
+- 目前是串行执行的，未来可不可以去并发执行？
+
+**基本流程**
+
+- 一、前端去递归调用后端的接口，调用的时候，传入计算好的文件整体md5值，并且从第一片，**依次**上传到最后一片，**过程中如果失败，后端应该提供接口，可以查询当前上传的情况，前端可以从失败的地方继续上传，断点，续传，这个目前没做**
+- 二、后端接收到之后，首先判断这个文件是不是已经上传了，上传了就直接返回url，判断的方式是根据md5去查询数据库
+- 三、后端如果发现确实没有上传好，就会去调用底层的上传服务，过程中每次切片上传成功只会返回空字符串，发生异常整个过程就停止，直到最后一片上传成功，才会去返回完整的url，**同时**入库
+- 四、后端再去调用接口的时候，判断是否为第一片，第一片就去调用首次上传的接口，并且返回文件url，之后更新redis中关于本文件的路径和已经上传的大小和片数，如果不是第一片，就去读取这个redis中这个文件当前已经上传的片数，去追加上传，直到成功后返回URL
+
+```javascript
+// 前端js代码
+async uploadFileBySlices(selectedFile) {
+  // 1. 参数校验
+  if (!selectedFile) {
+    window.alert('没有选择文件');
+    return;
+  }
+
+  // 2. 计算文件 MD5
+  const fileMd5 = await this.calculateVideoMD5(selectedFile);
+
+  // 3. 分片参数设置
+  const sliceSize = 2 * 1024 * 1024; // 分片大小 2MB
+  const totalSliceNo = Math.ceil(selectedFile.size / sliceSize);
+  const fileNameParts = selectedFile.name.split(".");
+  const sliceName = fileNameParts[0]; // 文件名前缀
+  const sliceType = fileNameParts[1]; // 文件扩展名
+
+  // 4. 递归上传分片
+  const uploadSlice = (sliceIndex) => {
+    // 分片切割
+    const start = sliceIndex * sliceSize;
+    const end = Math.min(start + sliceSize, selectedFile.size);
+    let slice = selectedFile.slice(start, end);
+
+    // 分片重命名（如 "video0.mp4"）
+    slice = new File([slice], `${sliceName}${sliceIndex}.${sliceType}`);
+
+    // 构建 FormData
+    const formData = new FormData();
+    formData.append('fileMd5', fileMd5);
+    formData.append('sliceNo', sliceIndex + 1); // 分片序号从 1 开始
+    formData.append('totalSliceNo', totalSliceNo);
+    formData.append('slice', slice);
+
+    // 发送分片并递归上传下一片
+    return new Promise((resolve) => {
+      videoApi.uploadFileBySlices(formData).then((response) => {
+        // 更新进度
+        this.uploadProgress = ((sliceIndex + 1) / totalSliceNo * 100).toFixed(1);
+        
+        // 递归终止条件：上传完成
+        if (sliceIndex + 1 === totalSliceNo) {
+          resolve(response);
+        } else {
+          uploadSlice(sliceIndex + 1).then(resolve);
+        }
+      });
+    });
+  };
+
+  return await uploadSlice(0); // 从第 0 片开始
+}
+```
+
+```java
+//FileApi
+@PutMapping("/file-slices")
+    public JsonResponse<String> uploadFileBySlices(MultipartFile slice,
+                                                   String fileMd5,
+                                                   Integer sliceNo,
+                                                   Integer totalSliceNo) throws Exception {
+        String filePath = fileService.uploadFileBySlices(slice, fileMd5, sliceNo, totalSliceNo);
+        return new JsonResponse<>(filePath);
+    }
+```
+
+```java
+//FileService
+public String uploadFileBySlices(MultipartFile slice,
+                                         String fileMD5,
+                                         Integer sliceNo,
+                                         Integer totalSliceNo) throws Exception {
+        File dbFileMD5 = fileDao.getFileByMD5(fileMD5);
+        if(dbFileMD5 != null){
+            return dbFileMD5.getUrl();
+        }
+        String url = fastDFSUtil.uploadFileBySlices(slice, fileMD5, sliceNo, totalSliceNo);
+        if(!StringUtil.isNullOrEmpty(url)){
+            dbFileMD5 = new File();
+            dbFileMD5.setCreateTime(new Date());
+            dbFileMD5.setMd5(fileMD5);
+            dbFileMD5.setUrl(url);
+            dbFileMD5.setType(fastDFSUtil.getFileType(slice));
+            fileDao.addFile(dbFileMD5);
+        }
+        return url;
+    }
+```
+
+```java
+//FastDFSUtils
+
+private static final String PATH_KEY = "path-key:";
+
+private static final String UPLOADED_SIZE_KEY = "uploaded-size-key:";
+
+private static final String UPLOADED_NO_KEY = "uploaded-no-key:";
+
+private static final String DEFAULT_GROUP = "group1";
+
+private static final int SLICE_SIZE = 1024 * 1024 * 2;
+
+public String uploadFileBySlices(MultipartFile file, String fileMd5, Integer sliceNo, Integer totalSliceNo) throws Exception {
+        if(file == null || sliceNo == null || totalSliceNo == null){
+            throw new ConditionException("参数异常！");
+        }
+        String pathKey = PATH_KEY + fileMd5;
+        String uploadedSizeKey = UPLOADED_SIZE_KEY + fileMd5;
+        String uploadedNoKey = UPLOADED_NO_KEY + fileMd5;
+        String uploadedSizeStr = redisTemplate.opsForValue().get(uploadedSizeKey);
+        Long uploadedSize = 0L;
+        if(!StringUtil.isNullOrEmpty(uploadedSizeStr)){
+            uploadedSize = Long.valueOf(uploadedSizeStr);
+        }
+        if(sliceNo == 1){ //上传的是第一个分片
+            String path = this.uploadAppenderFile(file);
+            if(StringUtil.isNullOrEmpty(path)){
+                throw new ConditionException("上传失败！");
+            }
+            redisTemplate.opsForValue().set(pathKey, path);
+            redisTemplate.opsForValue().set(uploadedNoKey, "1");
+        }else{
+            String filePath = redisTemplate.opsForValue().get(pathKey);
+            if(StringUtil.isNullOrEmpty(filePath)){
+                throw new ConditionException("上传失败！");
+            }
+            this.modifyAppenderFile(file, filePath,  uploadedSize);
+            redisTemplate.opsForValue().increment(uploadedNoKey);
+        }
+        // 修改历史上传分片文件大小
+        uploadedSize  += file.getSize();
+        redisTemplate.opsForValue().set(uploadedSizeKey, String.valueOf(uploadedSize));
+        //如果所有分片全部上传完毕，则清空redis里面相关的key和value
+        String uploadedNoStr = redisTemplate.opsForValue().get(uploadedNoKey);
+        Integer uploadedNo = Integer.valueOf(uploadedNoStr);
+        String resultPath = "";
+        if(uploadedNo.equals(totalSliceNo)){
+            resultPath = redisTemplate.opsForValue().get(pathKey);
+            List<String> keyList = Arrays.asList(uploadedNoKey, pathKey, uploadedSizeKey);
+            redisTemplate.delete(keyList);
+        }
+        return resultPath;
+    }
+```
+
+
+
 ## 亮点一：设计模式的使用
 
 ### 背景（技术问题）：
