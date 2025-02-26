@@ -50,6 +50,21 @@ function JsonJsOutput() {
         setJsCode('');
     };
 
+    // 复制输出内容
+    const handleCopyOutput = async () => {
+        try {
+            await navigator.clipboard.writeText(output);
+            console.log('输出内容已复制到剪贴板');
+        } catch (error) {
+            console.error('复制输出失败:', error);
+        }
+    };
+
+    // 清空输出
+    const handleClearOutput = () => {
+        setOutput('');
+    };
+
     // 格式化 JSON 输入
     const formatJsonInput = (value) => {
         try {
@@ -236,6 +251,34 @@ function JsonJsOutput() {
                 <div style={{flex: 1, maxWidth: '33%'}}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                         <h3 style={{ margin: '0' }}>输出</h3>
+                        <div style={{ display: 'flex', gap: '10px' }}>
+                            <button
+                                style={{
+                                    padding: '5px 10px',
+                                    background: '#007bff',
+                                    color: '#fff',
+                                    border: 'none',
+                                    borderRadius: '5px',
+                                    cursor: 'pointer',
+                                }}
+                                onClick={handleCopyOutput}
+                            >
+                                复制
+                            </button>
+                            <button
+                                style={{
+                                    padding: '5px 10px',
+                                    background: '#dc3545',
+                                    color: '#fff',
+                                    border: 'none',
+                                    borderRadius: '5px',
+                                    cursor: 'pointer',
+                                }}
+                                onClick={handleClearOutput}
+                            >
+                                清除
+                            </button>
+                        </div>
                     </div>
                     <div
                         style={{

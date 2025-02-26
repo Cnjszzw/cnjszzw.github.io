@@ -356,6 +356,11 @@ String str = new String(array);
 字符串如何排序？---->先转换成数组，然后先对数组排序，最后转换回去string
 Arrays.sort(array);
 
+//获取string的长度？,注意要加（）这个是一个方法，普通数组不用，因为那个是一个属性
+int size = str.length();
+
+//获取Sting的某一个索引的字符,如以下写法
+str.charAt(0);
 
 
 //截取
