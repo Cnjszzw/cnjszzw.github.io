@@ -75,6 +75,11 @@ const config = {
     ],
   ],
 
+  //我自己加的
+  markdown: {
+    mermaid: true,
+  },
+
   //我自己添加的
   themes: [
     // ... Your other themes.
@@ -93,6 +98,7 @@ const config = {
         // forceIgnoreNoIndex: true,
       }),
     ],
+    '@docusaurus/theme-mermaid'
   ],
   //我自己添加的
   plugins: [
@@ -216,6 +222,10 @@ const config = {
       //   ],
       //   copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       // },
+      //markdown-mermaid插件的配置
+      mermaid: {
+        theme: {light: 'forest', dark: 'forest'},
+      },
       //图片缩放插件的配置
       zoom: {
         selector: '.markdown :not(em) > img',
