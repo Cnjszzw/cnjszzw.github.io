@@ -146,13 +146,19 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'defaultDoc',
             position: 'left',
-            label: '文档📒',
+            label: '文档📝',
           },
           {
             type: 'docSidebar',
-            sidebarId: 'musicDoc',
+            sidebarId: 'interviewDoc',
             position: 'left',
-            label: '音乐🎵',
+            label: '面试💼',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'articleDoc',
+            position: 'left',
+            label: '文章📒',
           },
           {
             to: '/tools/JsonJsOutput', // 路由路径
