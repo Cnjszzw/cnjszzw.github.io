@@ -17,9 +17,9 @@
 }
 
 .textLine {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: bold;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.2rem;
   margin: 1rem 0;
   text-align: center;
   line-height: 1.2;
@@ -33,16 +33,15 @@
 }
 
 .charBox {
-  width: 2.5rem;
-  height: 2.5rem;
-  background: white;
+  width: 3.4rem;
+  height: 3.4rem;
+  background: black;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
+  font-size: 3.2rem;
   font-weight: bold;
-  color: black;
-  outline: 1px solid black;
+  color: white;
 }
 
 .error {
