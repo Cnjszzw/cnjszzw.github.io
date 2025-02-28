@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { setAuthenticated } from '@site/src/utils/auth';
 import styles from './styles.module.css';
+import clsx from 'clsx';
 
 export default function PasswordProtected({ onSuccess }) {
   const [password, setPassword] = useState('');
@@ -41,7 +42,13 @@ export default function PasswordProtected({ onSuccess }) {
         <div className={styles.textLine}>I AM</div>
         <form onSubmit={handleSubmit} className={styles.passwordLine}>
           {Array(4).fill().map((_, i) => (
-            <div key={i} className={styles.charBox}>
+            <div
+              key={i}
+              className={clsx(
+                styles.charBox,
+                i === password.length && password.length < 4 && styles.active
+              )}
+            >
               {password[i] || ''}
             </div>
           ))}
