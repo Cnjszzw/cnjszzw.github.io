@@ -5,7 +5,7 @@ export const protectedPaths = [
 
 // 生成密码的函数
 export const generatePassword = () => {
-  return '123';
+  return 'SHER';
 };
 
 // 本地存储的key

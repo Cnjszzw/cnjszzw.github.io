@@ -11,47 +11,42 @@
 }
 
 .authBox {
-  background: var(--ifm-background-color);
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   text-align: center;
 }
 
-.authBox h2 {
-  margin-bottom: 1.5rem;
-  color: var(--ifm-color-primary);
+.textLine {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+  margin: 1rem 0;
+  text-align: center;
+  line-height: 1.2;
 }
 
-.passwordInput {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 4px;
-  font-size: 1rem;
-  background: var(--ifm-background-color);
-  color: var(--ifm-font-color-base);
+.passwordLine {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.submitButton {
-  background: var(--ifm-color-primary);
-  color: white;
-  border: none;
-  padding: 0.5rem 2rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s;
-}
-
-.submitButton:hover {
-  background: var(--ifm-color-primary-darker);
+.charBox {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: black;
+  outline: 1px solid black;
 }
 
 .error {
   color: var(--ifm-color-danger);
-  margin-bottom: 1rem;
+  margin-top: 1rem;
   font-size: 0.9rem;
 } 
