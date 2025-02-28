@@ -53,8 +53,7 @@ export default function PasswordProtected({ onSuccess }) {
             </div>
           ))}
         </form>
-        <div className={styles.textLine}>LOCKED</div>
-        {error && <div className={styles.error}>密码错误</div>}
+        <div className={clsx(styles.textLine, error && styles.error)}>LOCKED</div>
       </div>
     </div>
   );

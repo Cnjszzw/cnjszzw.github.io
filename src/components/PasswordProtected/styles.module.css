@@ -65,8 +65,18 @@
   }
 }
 
-.error {
-  color: var(--ifm-color-danger);
-  margin-top: 1rem;
-  font-size: 0.9rem;
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  16.66%, 50%, 83.33% {
+    transform: translateX(-5px);
+  }
+  33.33%, 66.66% {
+    transform: translateX(5px);
+  }
+}
+
+.textLine.error {
+  animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 } 
