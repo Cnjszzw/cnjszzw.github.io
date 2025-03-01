@@ -15,13 +15,12 @@ export default function Home() {
         <div className={styles.contentContainer}>
           <div className={styles.headerContainer}>
             <div className={styles.titleSection}>
-              <div className={styles.greeting}>你好，</div>
-              <h1 className={styles.title}>我是赵志文</h1>
+              <h1 className={styles.title}>你好，我是赵志文</h1>
             </div>
           </div>
 
           <p className={styles.subtitle}>
-            <strong>INFO.CENTER</strong> 是我的个人网站，这里不仅是我的博客，也是一个集合文档、工具与技术分享的平台。无论是记录思考，整理知识，还是开发实用工具，我都希望这个网站能成为一个高效、实用的技术空间。欢迎探索！
+            <strong>INFO.CENTER</strong> 是我的个人网站，这里不仅是我的博客，也是一个集合文档、工具与技术分享的平台。欢迎探索！
           </p>
 
           <LiveCoding />

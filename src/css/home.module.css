@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6rem 2rem;
+  padding: 3rem 2rem;
   max-width: 720px;
   margin: 0 auto;
   min-height: calc(100vh - var(--ifm-navbar-height));
@@ -16,18 +16,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .titleSection {
   flex: 1;
-}
-
-.greeting {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--ifm-color-emphasis-600);
 }
 
 .title {
@@ -43,7 +36,7 @@
 .subtitle {
   font-size: 1.25rem;
   color: var(--ifm-color-emphasis-700);
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   line-height: 1.8;
 }
 
@@ -56,15 +49,11 @@
 /* 响应式设计 */
 @media (max-width: 768px) {
   .container {
-    padding: 4rem 1.5rem;
+    padding: 2rem 1.5rem;
   }
 
   .headerContainer {
-    gap: 1.5rem;
-  }
-
-  .greeting {
-    font-size: 1.8rem;
+    gap: 1rem;
   }
 
   .title {
