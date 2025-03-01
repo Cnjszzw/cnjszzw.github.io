@@ -1,57 +1,61 @@
 .container {
   width: 100%;
   margin-top: 1rem;
-  padding: 1.5rem;
-  border-radius: 8px;
-  background: var(--ifm-color-emphasis-100);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 0;
+  border-radius: 6px;
+  background: #000000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .container:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
 }
 
 .codeBlock {
   margin: 0;
+  padding: 1rem;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
   line-height: 1.5;
-  color: var(--ifm-color-emphasis-800);
+  color: #00ff00;
   white-space: pre;
+  background: #000000;
+  position: relative;
 }
 
 /* 语法高亮 */
 .keyword {
-  color: #cf2e9b;
-  font-weight: 500;
+  color: #00ff00;
+  font-weight: 700;
 }
 
 .type {
-  color: #2e95cf;
+  color: #39ff14;
   font-weight: 500;
 }
 
 .string {
-  color: #16a34a;
+  color: #98ff98;
 }
 
 .number {
-  color: #e6912c;
+  color: #7fff00;
 }
 
 .bracket {
-  color: #6b7280;
+  color: #32cd32;
 }
 
 .comment {
-  color: #64748b;
+  color: #228b22;
   font-style: italic;
 }
 
 .blockComment {
-  color: #64748b;
+  color: #228b22;
   font-style: italic;
   font-weight: 500;
 }
@@ -59,7 +63,7 @@
 /* 光标动画 */
 .cursor {
   display: inline-block;
-  color: var(--ifm-color-emphasis-800);
+  color: #00ff00;
   animation: blink 1s step-end infinite;
 }
 
@@ -74,43 +78,44 @@
 
 /* 暗色主题优化 */
 [data-theme='dark'] .container {
-  background: var(--ifm-color-emphasis-200);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background: #000000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 [data-theme='dark'] .container:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
 }
 
 [data-theme='dark'] .codeBlock {
-  color: var(--ifm-color-emphasis-900);
+  color: #00ff00;
+  background: #000000;
 }
 
 [data-theme='dark'] .keyword {
-  color: #ff79c6;
+  color: #00ff00;
 }
 
 [data-theme='dark'] .type {
-  color: #61dafb;
+  color: #39ff14;
 }
 
 [data-theme='dark'] .string {
-  color: #4ade80;
+  color: #98ff98;
 }
 
 [data-theme='dark'] .number {
-  color: #ffb86c;
+  color: #7fff00;
 }
 
 [data-theme='dark'] .bracket {
-  color: #9ca3af;
+  color: #32cd32;
 }
 
 [data-theme='dark'] .comment,
 [data-theme='dark'] .blockComment {
-  color: #94a3b8;
+  color: #228b22;
 }
 
 [data-theme='dark'] .cursor {
-  color: var(--ifm-color-emphasis-900);
+  color: #00ff00;
 } 
