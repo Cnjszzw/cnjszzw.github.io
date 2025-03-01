@@ -16,24 +16,44 @@
 .codeBlock {
   margin: 0;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.9rem;
+  line-height: 1.5;
   color: var(--ifm-color-emphasis-800);
-  white-space: pre-wrap;
+  white-space: pre;
 }
 
 /* 语法高亮 */
 .keyword {
-  color: var(--ifm-color-primary);
+  color: #cf2e9b;
+  font-weight: 500;
+}
+
+.type {
+  color: #2e95cf;
+  font-weight: 500;
 }
 
 .string {
   color: #16a34a;
 }
 
+.number {
+  color: #e6912c;
+}
+
+.bracket {
+  color: #6b7280;
+}
+
 .comment {
   color: #64748b;
   font-style: italic;
+}
+
+.blockComment {
+  color: #64748b;
+  font-style: italic;
+  font-weight: 500;
 }
 
 /* 光标动画 */
@@ -66,11 +86,28 @@
   color: var(--ifm-color-emphasis-900);
 }
 
+[data-theme='dark'] .keyword {
+  color: #ff79c6;
+}
+
+[data-theme='dark'] .type {
+  color: #61dafb;
+}
+
 [data-theme='dark'] .string {
   color: #4ade80;
 }
 
-[data-theme='dark'] .comment {
+[data-theme='dark'] .number {
+  color: #ffb86c;
+}
+
+[data-theme='dark'] .bracket {
+  color: #9ca3af;
+}
+
+[data-theme='dark'] .comment,
+[data-theme='dark'] .blockComment {
   color: #94a3b8;
 }
 

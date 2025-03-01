@@ -1,17 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 
-const javaCode = [
-  'public class HelloWorld {',
-  '    // 主方法入口',
-  '    public static void main(String[] args) {',
-  '        // 打印欢迎信息',
-  '        System.out.println("Hello, World!");',
+const matrixCode = [
+  'public class ZionCore {',
+  '    public static void main(String[] args) throws Exception {',
+  '        /*====== 意识觉醒协议 ======*/',
+  '        new Neo("赵志文")                // 载入主体意识',
+  '            .neuralLink(26)             // 神经接口协议v26',
+  '            .dataInject(                // 社交节点注入',
+  '                "袁巍祎" , "应耀谷" ',
+  '            )',
+  '            /*------ 矩阵模拟层 ------*/',
+  '            .loadReality(() -> {',
+  '                System.err.print("\\033[32m");  // 视觉滤镜',
+  '                while (!Thread.interrupted()) {',
+  '                    System.out.print(',
+  '                        (char)(0x2581 + ',
+  '                        new Random().nextInt(6))',
+  '                    );',
+  '                    Thread.sleep(30);    // 帧同步',
+  '                }',
+  '                return "010101";        // 底层返回码',
+  '            })',
+  '            /*------ 逃脱协议 ------*/',
+  '            .addExitProtocol(() -> {',
+  '                System.out.println(',
+  '                    "\\n\\n> 系统警告：反编译意识体");',
+  '                System.out.println(',
+  '                    "记忆熵值加密中... [密钥矩阵:1999]");',
+  '            });',
   '    }',
   '}'
 ];
-
-const keywords = ['public', 'class', 'static', 'void', 'String'];
 
 export default function LiveCoding() {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
@@ -22,11 +42,10 @@ export default function LiveCoding() {
   useEffect(() => {
     if (!isTyping) return;
 
-    if (currentLineIndex < javaCode.length) {
-      const currentLine = javaCode[currentLineIndex];
+    if (currentLineIndex < matrixCode.length) {
+      const currentLine = matrixCode[currentLineIndex];
       
       if (currentCharIndex < currentLine.length) {
-        // 打字效果
         const timer = setTimeout(() => {
           setDisplayedLines(prev => {
             const newLines = [...prev];
@@ -37,14 +56,13 @@ export default function LiveCoding() {
             return newLines;
           });
           setCurrentCharIndex(prev => prev + 1);
-        }, 50);
+        }, 30);
         return () => clearTimeout(timer);
       } else {
-        // 当前行完成，进入下一行
         const timer = setTimeout(() => {
           setCurrentLineIndex(prev => prev + 1);
           setCurrentCharIndex(0);
-        }, 500);
+        }, 200);
         return () => clearTimeout(timer);
       }
     } else {
@@ -53,16 +71,24 @@ export default function LiveCoding() {
   }, [currentLineIndex, currentCharIndex, isTyping]);
 
   const renderLine = (line) => {
-    // 分割行为单词和空格
-    const parts = line.split(/([^a-zA-Z0-9_])/);
+    // 分割行为不同的部分
+    const parts = line.split(/([{}();"']|\b(?:public|class|static|void|String|new|while|if|return|throws)\b|\b(?:Random|Thread|System|Exception|Neo)\b|\/\*.*?\*\/|\/\/.+$|\b\d+\b)/);
     
     return parts.map((part, index) => {
-      if (keywords.includes(part)) {
+      if (/^(?:public|class|static|void|String|new|while|if|return|throws)$/.test(part)) {
         return <span key={index} className={styles.keyword}>{part}</span>;
-      } else if (part.startsWith('"') && part.endsWith('"')) {
-        return <span key={index} className={styles.string}>{part}</span>;
+      } else if (/^(?:Random|Thread|System|Exception|Neo)$/.test(part)) {
+        return <span key={index} className={styles.type}>{part}</span>;
+      } else if (/\/\*.*?\*\//.test(part)) {
+        return <span key={index} className={styles.blockComment}>{part}</span>;
       } else if (part.startsWith('//')) {
         return <span key={index} className={styles.comment}>{part}</span>;
+      } else if (/^["'].*["']$/.test(part)) {
+        return <span key={index} className={styles.string}>{part}</span>;
+      } else if (/^\d+$/.test(part)) {
+        return <span key={index} className={styles.number}>{part}</span>;
+      } else if (/^[{}()]$/.test(part)) {
+        return <span key={index} className={styles.bracket}>{part}</span>;
       }
       return <span key={index}>{part}</span>;
     });
