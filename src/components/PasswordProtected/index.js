@@ -6,9 +6,25 @@ import clsx from 'clsx';
 export default function PasswordProtected({ onSuccess }) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+  const [isInitialCheck, setIsInitialCheck] = useState(true);
 
   useEffect(() => {
-    // 添加全局键盘事件监听
+    setIsClient(true);
+    // 检查初始认证状态
+    const checkInitialAuth = () => {
+      const isValid = setAuthenticated('');  // 空字符串只会检查状态而不会设置新密码
+      if (isValid) {
+        onSuccess?.();
+      }
+      setIsInitialCheck(false);
+    };
+    checkInitialAuth();
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;  // 只在客户端添加事件监听
+
     const handleKeyPress = (e) => {
       if (e.key.match(/^[a-zA-Z]$/) && password.length < 4) {
         setPassword(prev => (prev + e.key).toUpperCase());
@@ -23,10 +39,10 @@ export default function PasswordProtected({ onSuccess }) {
 
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
-  }, [password]);
+  }, [password, isClient]);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e?.preventDefault();
     const isValid = setAuthenticated(password);
     if (!isValid) {
       setError(true);
@@ -35,6 +51,16 @@ export default function PasswordProtected({ onSuccess }) {
       onSuccess?.();
     }
   };
+
+  // 在初始检查完成之前不渲染任何内容
+  if (isInitialCheck) {
+    return null;
+  }
+
+  // 只在客户端渲染
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <div className={styles.authContainer}>
