@@ -1,0 +1,79 @@
+.container {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: var(--ifm-color-emphasis-100);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.container:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.codeBlock {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-800);
+  white-space: pre-wrap;
+}
+
+/* 语法高亮 */
+.keyword {
+  color: var(--ifm-color-primary);
+}
+
+.string {
+  color: #16a34a;
+}
+
+.comment {
+  color: #64748b;
+  font-style: italic;
+}
+
+/* 光标动画 */
+.cursor {
+  display: inline-block;
+  color: var(--ifm-color-emphasis-800);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* 暗色主题优化 */
+[data-theme='dark'] .container {
+  background: var(--ifm-color-emphasis-200);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] .container:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .codeBlock {
+  color: var(--ifm-color-emphasis-900);
+}
+
+[data-theme='dark'] .string {
+  color: #4ade80;
+}
+
+[data-theme='dark'] .comment {
+  color: #94a3b8;
+}
+
+[data-theme='dark'] .cursor {
+  color: var(--ifm-color-emphasis-900);
+} 
