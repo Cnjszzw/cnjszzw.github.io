@@ -118,4 +118,19 @@
 
 [data-theme='dark'] .cursor {
   color: #00ff00;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* 为 iOS 设备添加平滑滚动 */
+  }
+  
+  .codeBlock {
+    font-size: 0.75rem; /* 移动端字体缩小 */
+    padding: 1rem 0.5rem;
+    min-width: max-content; /* 确保内容不会被压缩 */
+  }
 } 
