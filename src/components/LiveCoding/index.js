@@ -44,13 +44,13 @@ export default function LiveCoding() {
             return newLines;
           });
           setCurrentCharIndex(prev => prev + 1);
-        }, 30);
+        }, 15);
         return () => clearTimeout(timer);
       } else {
         const timer = setTimeout(() => {
           setCurrentLineIndex(prev => prev + 1);
           setCurrentCharIndex(0);
-        }, 200);
+        }, 100);
         return () => clearTimeout(timer);
       }
     } else {
