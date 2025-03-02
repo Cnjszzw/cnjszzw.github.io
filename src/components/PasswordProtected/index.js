@@ -192,27 +192,50 @@ export default function PasswordProtected({ onSuccess }) {
     };
   }, [isClient]);
 
-  // 处理移动端点击输入
-  const handleCharBoxClick = (index) => {
-    if (!isMobile) return; // 仅在移动端启用
+  // 处理移动端输入
+  const handleMobileInput = () => {
+    if (!isMobile) return;
     
-    // 获取当前密码字符
-    const currentChar = password[index] || '';
-    
-    // 弹出提示框让用户输入
-    const newChar = prompt('请输入字母:', currentChar);
-    
-    // 处理输入
-    if (newChar !== null) {  // 用户点击了确定
-      const char = newChar.trim().toUpperCase();
-      if (char.match(/^[A-Z]$/)) {
-        setPassword(prev => {
-          const newPass = prev.split('');
-          newPass[index] = char;
-          return newPass.join('');
-        });
+    // 创建一个隐藏的输入框
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.maxLength = 4;
+    input.value = password;
+    input.style.cssText = 'position:fixed;top:-100%;opacity:0;';
+    document.body.appendChild(input);
+
+    // 聚焦并监听输入
+    input.focus();
+
+    const handleInput = () => {
+      const value = input.value.toUpperCase();
+      if (value.match(/^[A-Z]*$/)) {
+        setPassword(value);
         setError(false);
       }
+    };
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Enter' && input.value.length === 4) {
+        handleSubmit();
+        document.body.removeChild(input);
+      }
+    };
+
+    input.addEventListener('input', handleInput);
+    input.addEventListener('keydown', handleKeyDown);
+    input.addEventListener('blur', () => {
+      // 给一点延迟，确保其他事件处理完
+      setTimeout(() => {
+        document.body.removeChild(input);
+      }, 100);
+    });
+  };
+
+  // 在移动端，点击任何密码框都触发输入
+  const handleCharBoxClick = () => {
+    if (isMobile) {
+      handleMobileInput();
     }
   };
 
@@ -240,7 +263,7 @@ export default function PasswordProtected({ onSuccess }) {
                 i === password.length && password.length < 4 && styles.active,
                 isMobile && styles.clickable
               )}
-              onClick={() => handleCharBoxClick(i)}
+              onClick={handleCharBoxClick}
             >
               {password[i] || ''}
             </div>
