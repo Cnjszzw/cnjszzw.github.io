@@ -43,8 +43,8 @@ main * {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* 确保不遮挡 sidebar，Docusaurus 的 sidebar z-index 是 2000 */
-  z-index: 1999;
+  /* 确保在 sidebar 下方 */
+  z-index: 100;
   width: 100%;
   max-width: 500px;
   padding: 0 1rem;
@@ -146,7 +146,7 @@ main * {
 /* 移动端适配 */
 @media (max-width: 996px) {
   /* 当 sidebar 打开时，调整密码框位置 */
-  :global(body.sidebar-opened) .authContainer {
+  :global(body[data-sidebar-opened="true"]) .authContainer {
     left: calc(50% + var(--doc-sidebar-width) / 2);
   }
 
