@@ -1,19 +1,70 @@
-.authContainer {
+/* 在body上直接应用模糊效果 */
+:global(body.locked) main {
+  filter: blur(3px);
+  backdrop-filter: none;
+}
+
+:global(body.locked) main * {
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+/* 大纲样式 */
+:global(body.locked) .table-of-contents {
+  filter: blur(3px);
+  background: transparent !important;
+}
+
+:global(body.locked) .table-of-contents__link--active {
+  background-color: var(--ifm-color-primary-lightest);
+  opacity: 0.8;
+}
+
+/* 确保非锁定状态下的正常交互 */
+main {
+  filter: none;
+  pointer-events: auto;
+}
+
+main * {
+  pointer-events: auto;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+/* 密码框容器 */
+:global(body) .authContainer {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10;
-  pointer-events: all;
+  z-index: 9999;
   width: 100%;
   max-width: 500px;
   padding: 0 1rem;
+  pointer-events: auto !important;
+  user-select: auto !important;
+  -webkit-user-select: auto !important;
+  -moz-user-select: auto !important;
+  -ms-user-select: auto !important;
+  filter: none !important;
 }
 
 .authBox {
   padding: 2rem;
   width: 100%;
   text-align: center;
+  pointer-events: auto !important;
+  user-select: auto !important;
+  -webkit-user-select: auto !important;
+  -moz-user-select: auto !important;
+  -ms-user-select: auto !important;
+  filter: none !important;
 }
 
 .textLine {
@@ -79,4 +130,11 @@
 
 .textLine.error {
   animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* 移动端适配 */
+@media (max-width: 996px) {
+  .overlay {
+    left: 0;
+  }
 } 
