@@ -196,19 +196,15 @@ export default function PasswordProtected({ onSuccess }) {
   const handleCharBoxClick = (index) => {
     if (!isMobile) return; // 仅在移动端启用
     
-    // 创建一个临时输入框
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.maxLength = 1;
-    input.style.position = 'fixed';
-    input.style.opacity = '0';
-    input.style.pointerEvents = 'none';
-    document.body.appendChild(input);
-
-    // 聚焦并监听输入
-    input.focus();
-    const handleInput = (e) => {
-      const char = e.target.value.toUpperCase();
+    // 获取当前密码字符
+    const currentChar = password[index] || '';
+    
+    // 弹出提示框让用户输入
+    const newChar = prompt('请输入字母:', currentChar);
+    
+    // 处理输入
+    if (newChar !== null) {  // 用户点击了确定
+      const char = newChar.trim().toUpperCase();
       if (char.match(/^[A-Z]$/)) {
         setPassword(prev => {
           const newPass = prev.split('');
@@ -217,13 +213,7 @@ export default function PasswordProtected({ onSuccess }) {
         });
         setError(false);
       }
-      document.body.removeChild(input);
-    };
-
-    input.addEventListener('input', handleInput, { once: true });
-    input.addEventListener('blur', () => {
-      document.body.removeChild(input);
-    }, { once: true });
+    }
   };
 
   // 在初始检查完成之前不渲染任何内容
