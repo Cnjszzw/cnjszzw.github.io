@@ -43,7 +43,8 @@ main * {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999;
+  /* 确保不遮挡 sidebar，Docusaurus 的 sidebar z-index 是 2000 */
+  z-index: 1999;
   width: 100%;
   max-width: 500px;
   padding: 0 1rem;
@@ -96,6 +97,16 @@ main * {
   position: relative;
 }
 
+/* 移动端点击样式 */
+.charBox.clickable {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.charBox.clickable:active {
+  transform: scale(0.95);
+}
+
 .charBox.active::after {
   content: '';
   position: absolute;
@@ -134,7 +145,24 @@ main * {
 
 /* 移动端适配 */
 @media (max-width: 996px) {
-  .overlay {
-    left: 0;
+  /* 当 sidebar 打开时，调整密码框位置 */
+  :global(body.sidebar-opened) .authContainer {
+    left: calc(50% + var(--doc-sidebar-width) / 2);
+  }
+
+  .charBox {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2.8rem;
+  }
+  
+  .charBox.clickable::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+    background: transparent;
   }
 } 

@@ -9,9 +9,15 @@ export default function PasswordProtected({ onSuccess }) {
   const [error, setError] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [isInitialCheck, setIsInitialCheck] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
+    // 检测是否为移动设备
+    const checkMobile = () => {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    };
+    setIsMobile(checkMobile());
     // 检查初始认证状态
     const checkInitialAuth = () => {
       const isValid = setAuthenticated('');  // 空字符串只会检查状态而不会设置新密码
@@ -186,6 +192,40 @@ export default function PasswordProtected({ onSuccess }) {
     };
   }, [isClient]);
 
+  // 处理移动端点击输入
+  const handleCharBoxClick = (index) => {
+    if (!isMobile) return; // 仅在移动端启用
+    
+    // 创建一个临时输入框
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.maxLength = 1;
+    input.style.position = 'fixed';
+    input.style.opacity = '0';
+    input.style.pointerEvents = 'none';
+    document.body.appendChild(input);
+
+    // 聚焦并监听输入
+    input.focus();
+    const handleInput = (e) => {
+      const char = e.target.value.toUpperCase();
+      if (char.match(/^[A-Z]$/)) {
+        setPassword(prev => {
+          const newPass = prev.split('');
+          newPass[index] = char;
+          return newPass.join('');
+        });
+        setError(false);
+      }
+      document.body.removeChild(input);
+    };
+
+    input.addEventListener('input', handleInput, { once: true });
+    input.addEventListener('blur', () => {
+      document.body.removeChild(input);
+    }, { once: true });
+  };
+
   // 在初始检查完成之前不渲染任何内容
   if (isInitialCheck) {
     return null;
@@ -207,8 +247,10 @@ export default function PasswordProtected({ onSuccess }) {
               key={i}
               className={clsx(
                 styles.charBox,
-                i === password.length && password.length < 4 && styles.active
+                i === password.length && password.length < 4 && styles.active,
+                isMobile && styles.clickable
               )}
+              onClick={() => handleCharBoxClick(i)}
             >
               {password[i] || ''}
             </div>
