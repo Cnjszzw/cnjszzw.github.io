@@ -165,8 +165,8 @@ const config = {
             label: '工具🔨', // 标签名称
             position: 'left', // 标签位置
           },
-          //暂时移除blog的路由
-          //{to: '/blog', label: '博客', position: 'left'},
+          // blog的路由
+          {to: '/blog', label: '博客✍️', position: 'left'},
           {
             type: 'search',
             position: 'right',  // 搜索框将显示在左侧
