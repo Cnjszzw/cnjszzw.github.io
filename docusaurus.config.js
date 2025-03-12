@@ -54,6 +54,7 @@ const config = {
             'https://github.com/Cnjszzw/cnjszzw.github.io/tree/master/',
         },
         blog: {
+          blogSidebarCount: 'ALL', // 显示所有文章
           showReadingTime: true,
           feedOptions: {
             type: ['rss', 'atom'],
