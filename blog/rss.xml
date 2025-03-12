@@ -4,94 +4,27 @@
         <title>INFO.CENTER Blog</title>
         <link>https://cnjszzw.github.io/blog</link>
         <description>INFO.CENTER Blog</description>
-        <lastBuildDate>Thu, 26 Aug 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 30 Sep 2020 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
-            <title><![CDATA[Welcome]]></title>
-            <link>https://cnjszzw.github.io/blog/welcome</link>
-            <guid>https://cnjszzw.github.io/blog/welcome</guid>
-            <pubDate>Thu, 26 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Docusaurus blogging features are powered by the blog plugin.]]></description>
-            <content:encoded><![CDATA[<p><a href="https://docusaurus.io/docs/blog" target="_blank" rel="noopener noreferrer">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog" target="_blank" rel="noopener noreferrer">blog plugin</a>.</p>
-<p>Here are a few tips you might find useful.</p>
-<p>Simply add Markdown files (or folders) to the <code>blog</code> directory.</p>
-<p>Regular blog authors can be added to <code>authors.yml</code>.</p>
-<p>The blog post date can be extracted from filenames, such as:</p>
-<ul>
-<li><code>2019-05-30-welcome.md</code></li>
-<li><code>2019-05-30-welcome/index.md</code></li>
-</ul>
-<p>A blog post folder can be convenient to co-locate blog post images:</p>
-<p><img decoding="async" loading="lazy" alt="Docusaurus Plushie" src="https://cnjszzw.github.io/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500" class="img_ev3q"></p>
-<p>The blog supports tags as well!</p>
-<p><strong>And if you don't want a blog</strong>: just delete this directory, and use <code>blog: false</code> in your Docusaurus config.</p>]]></content:encoded>
-            <category>Facebook</category>
-            <category>Hello</category>
-            <category>Docusaurus</category>
-        </item>
-        <item>
-            <title><![CDATA[MDX Blog Post]]></title>
-            <link>https://cnjszzw.github.io/blog/mdx-blog-post</link>
-            <guid>https://cnjszzw.github.io/blog/mdx-blog-post</guid>
-            <pubDate>Sun, 01 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Blog posts support Docusaurus Markdown features, such as MDX.]]></description>
-            <content:encoded><![CDATA[<p>Blog posts support <a href="https://docusaurus.io/docs/markdown-features" target="_blank" rel="noopener noreferrer">Docusaurus Markdown features</a>, such as <a href="https://mdxjs.com/" target="_blank" rel="noopener noreferrer">MDX</a>.</p>
-<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>Use the power of React to create interactive blog posts.</p></div></div>
-<!-- -->
-<p>For example, use JSX to create an interactive button:</p>
-<div class="language-js codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-js codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">button onClick</span><span class="token operator" style="color:#393A34">=</span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token arrow operator" style="color:#393A34">=&gt;</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">alert</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">'button clicked!'</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">}</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token maybe-class-name">Click</span><span class="token plain"> me</span><span class="token operator" style="color:#393A34">!</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">button</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<button>Click me!</button>]]></content:encoded>
-            <category>Docusaurus</category>
-        </item>
-        <item>
-            <title><![CDATA[Greetings!]]></title>
-            <link>https://cnjszzw.github.io/blog/greetings</link>
-            <guid>https://cnjszzw.github.io/blog/greetings</guid>
-            <pubDate>Sun, 28 Feb 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Congratulations, you have made your first post!]]></description>
-            <content:encoded><![CDATA[<p>Congratulations, you have made your first post!</p>
-<p>Feel free to play around and edit this post as much as you like.</p>]]></content:encoded>
-            <category>greetings</category>
-        </item>
-        <item>
-            <title><![CDATA[Long Blog Post]]></title>
-            <link>https://cnjszzw.github.io/blog/long-blog-post</link>
-            <guid>https://cnjszzw.github.io/blog/long-blog-post</guid>
-            <pubDate>Wed, 29 May 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[This is the summary of a very long blog post,]]></description>
-            <content:encoded><![CDATA[<p>This is the summary of a very long blog post,</p>
-<p>Use a <code>&lt;!--</code> <code>truncate</code> <code>--&gt;</code> comment to limit blog post size in the list view.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content:encoded>
-            <category>Hello</category>
-            <category>Docusaurus</category>
-        </item>
-        <item>
-            <title><![CDATA[First Blog Post]]></title>
-            <link>https://cnjszzw.github.io/blog/first-blog-post</link>
-            <guid>https://cnjszzw.github.io/blog/first-blog-post</guid>
-            <pubDate>Tue, 28 May 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[Lorem ipsum dolor sit amet...]]></description>
-            <content:encoded><![CDATA[<p>Lorem ipsum dolor sit amet...</p>
-<p>...consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content:encoded>
-            <category>Hola</category>
-            <category>Docusaurus</category>
+            <title><![CDATA[雅思的第一百个崩溃瞬间]]></title>
+            <link>https://cnjszzw.github.io/blog/雅思的第一百个崩溃瞬间</link>
+            <guid>https://cnjszzw.github.io/blog/雅思的第一百个崩溃瞬间</guid>
+            <pubDate>Wed, 30 Sep 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[2020年9月7日，口语考试日期公布，定在笔试的前三天，深夜，我喜出望外，因为疫情，最近关于雅思的坏消息不断传来，像是什么难度爆炸的阅读听力、9月换题季、口语预订服务取消……一度我陷入了绝望的深渊，因此这次难得的好消息着实让我安心了一把，然而效果短暂，很快我又进入到失眠的状态，原因无他，只是最近糟糕的状态。]]></description>
+            <content:encoded><![CDATA[<p>2020年9月7日，口语考试日期公布，定在笔试的前三天，深夜，我喜出望外，因为疫情，最近关于雅思的坏消息不断传来，像是什么难度爆炸的阅读听力、9月换题季、口语预订服务取消……一度我陷入了绝望的深渊，因此这次难得的好消息着实让我安心了一把，然而效果短暂，很快我又进入到失眠的状态，原因无他，只是最近糟糕的状态。</p>
+<p>七月中下旬，经历了大半年的躺平，我终于从各种自我的借口与推脱中解放出来，报名了9月中旬的雅思，然而我终究还是高估了自己的自律同时低估了懒惰的惯性，还是拖了近半月才开始去学习雅思，开头永远是艰难的，尽管之前自己一直在躺平，但还是浏览量关于雅思的大量学习资料与方法，然而面对雅思却真的一点点都无从下手，因此我花了将近整整一个星期写了半本雅思真题，其中不断回看检验各种经验贴、方法论，才算半入门雅思，而此时距离开学仅仅剩下2个多星期，这段时间，算是做出了自己最大的努力尝试去养成学习习惯，每天坚持写雅思真题，并进行精读，精听，就这样写完了两本雅思真题，但说实话每天平均学习时间实际只有两个多小时，就这样，时间也等到了开学。</p>
+<p>2020的疫情造成了许多变故，开学导致了搬家、宿舍彻底大扫除与期末考试的恐怖大合集，这导致我在学校的接近一星期内都极其疲惫，雅思也被抛之脑后。于是，想到这一点就极其惊恐的我，急忙在最后一场考试后的第一天就开始了雅思学习，意识到时日不多，距离雅思考试只剩下短暂的20天不到的时间，我加倍了雅思的学习量，在接下来的8天又写完了两本真题并复习了小作文，直到时间终于来到了最近……</p>
+<p>从之前的经历可以看出，我的学习全部集中在听力、阅读和少量的作文上,学习时间也从每天的一个多小时到2-3个小时到4-5个小时，时间不断增长，阅读和听力较最初也有了一些进步，暑假听力与阅读多集中于6.5与7（二者55开），偶有6.0，但经过学校的两套真题的训练，阅读最高上探到8.5,基本实现了8分、7分、6.5分三足鼎立，并且7分占主流的格局，尽管不稳定，并且6.5分出现概率仍然有，但仍然看到了进步，尽管听力仍多集中于6.5到7分的范围，但好歹算是慢慢适应了1.25倍速，也是不小的进步。</p>
+<p>然而真正的问题就在于作文与口语的缺失，和貌似精力上限值的到来，实际上，随着开学各种课程的开课，我的精力与时间不得不被大量占用，维持现状都已经足够艰难，但时间已经非常非常紧迫，还有不到一星期是口语考试，还有十天不到是笔试，这也就意味着在接下来的一星期，，我将迎来雅思的extremely hard模式，不仅要学习完大作文，还要每天做完完整的一套试卷（听力+阅读+小作文+大作文），并且精读精听修改作文，学习范文，并且准备最为紧迫的口语，准备语料库和练习。于是理所当然的，我崩溃了……</p>
+<p>9月6日-9月7日，压力压得我喘不过气，终究我选择了退缩，两天内除了写完了一套试卷（除去大作文）和做了一半便放弃的精听和精读，一事无成，即使得到了了不错的分数（7分+8分），小作文也还算有感觉，但焦虑仍然笼罩。</p>
+<p>7点多，仍是傍晚，从自习室走出的我，虽有遗憾和忧虑，却又有一丝放松与宽慰，相比于高中，在每天高达16+小时的学习时间下，那时的我可以说无时无刻都处于崩溃中，可是我认不清现实，即使每天无意义的在晚自习撑两个小时也不选择放过自己，但其实在内心深处，自己早已沉沦。也许，在某个阶段，自己有时候真的没有那么坚强，为了当下自己的解脱不被压垮，也为了将来能够仍然怀有信心迎接挑战，暂时放自己一马吧。</p>
+<p>写到这，心情确实好了些许，但求未来每天能够维持5个小时的学习时间，重点可能放在口语与大作文，确实改补补了，至于听力与阅读作为基本盘，尽量保持手感，把写完13和15作为目标。</p>
+<p><img decoding="async" loading="lazy" alt="640" src="https://cnjszzw.github.io/assets/images/640-7176d9345e15163384d433d03fcf9de6.jpg" width="1080" height="645" class="img_ev3q"></p>]]></content:encoded>
+            <category>Life</category>
+            <category>SDNU</category>
         </item>
     </channel>
 </rss>
