@@ -146,27 +146,27 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'defaultDoc',
             position: 'left',
-            label: '文档📝',
+            label: '文档',
           },
           {
             type: 'docSidebar',
             sidebarId: 'interviewDoc',
             position: 'left',
-            label: '面试💼',
+            label: '面试',
           },
           {
             type: 'docSidebar',
             sidebarId: 'articleDoc',
             position: 'left',
-            label: '文章📒',
+            label: '文章',
           },
           {
             to: '/tools/JsonJsOutput', // 路由路径
-            label: '工具🔨', // 标签名称
+            label: '工具', // 标签名称
             position: 'left', // 标签位置
           },
           // blog的路由
-          {to: '/blog', label: '博客✍️', position: 'left'},
+          {to: '/blog', label: '博客', position: 'left'},
           {
             type: 'search',
             position: 'right',  // 搜索框将显示在左侧
