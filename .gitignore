@@ -18,3 +18,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/docs/defaultDoc/Project/assets/.$数字采集及数字处理系统.drawio.bkp
+/docs/defaultDoc/assets/.idea/assets.iml
+/docs/defaultDoc/assets/.idea/modules.xml
+/.idea/vcs.xml
+/docs/defaultDoc/assets/.idea/workspace.xml

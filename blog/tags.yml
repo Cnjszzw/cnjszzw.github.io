@@ -17,3 +17,12 @@ hola:
   label: Hola
   permalink: /hola
   description: Hola tag description
+
+life:
+  label: Life
+  permalink: /life
+  description: Live in the world.
+SDNU:
+  label: SDNU
+  permalink: /SDNU
+  description: Four years in SDNU.
