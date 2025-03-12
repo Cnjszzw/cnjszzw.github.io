@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // 定义文件路径
-const filePath = path.join(path.dirname(__dirname), 'docs/defaultDoc/Algorithm/Java_API.md'); // 输入文件路径
+const filePath = path.join(path.dirname(__dirname), 'blog/2022-07-09-去西安了 - 副本.mdx'); // 输入文件路径
 
 // 读取文件内容
 fs.readFile(filePath, 'utf8', (err, data) => {
@@ -11,10 +11,10 @@ fs.readFile(filePath, 'utf8', (err, data) => {
         return;
     }
 
-    // 使用正则表达式匹配 <span style={{ color: ... }}>...</span>
+    // 使用正则表达式匹配 Markdown 图片语法 ![alt](./path/to/image.jpg)
     const updatedContent = data.replace(
-        /<span style={{[^}]+}}>(.*?)<\/span>/g,
-        '<u>$1</u>' // 将匹配到的内容用 <u> 包裹
+        /!\[([^\]]*)\]\(([^)]+)\)/g, // 匹配图片的正则表达式
+        '<Image img={require(\'$2\')} />' // 替换为目标格式
     );
 
     // 写回原文件
