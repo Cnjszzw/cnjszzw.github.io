@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmydocusaurus=self.webpackChunkmydocusaurus||[]).push([[7472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"\u96c5\u601d\u7684\u7b2c\u4e00\u767e\u4e2a\u5d29\u6e83\u77ac\u95f4","permalink":"/blog/\u96c5\u601d\u7684\u7b2c\u4e00\u767e\u4e2a\u5d29\u6e83\u77ac\u95f4","unlisted":false,"date":"2020-09-30T00:00:00.000Z"}]}')}}]);
