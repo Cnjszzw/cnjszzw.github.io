@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmydocusaurus=self.webpackChunkmydocusaurus||[]).push([[8121],{68070:e=>{e.exports=JSON.parse('{"tags":[{"label":"Life","permalink":"/blog/tags/life","description":"Live in the world.","count":6},{"label":"SDNU","permalink":"/blog/tags/SDNU","description":"Four years in SDNU.","count":5}]}')}}]);
