@@ -41,9 +41,292 @@
 
 ## 〇、字符串
 
+### 1. String的基本特性
 
+String是Java中的引用类型，一旦创建，内容不可变（immutable）。String对象存储在字符串常量池中，相同内容的字符串会共享同一个对象。
 
+```java
+// 两种创建方式
+String s1 = "hello"; // 字面量方式，直接在常量池中创建
+String s2 = new String("hello"); // 使用构造函数，在堆中创建对象
+```
 
+### 2. 常用API
+
+#### 2.1 长度和访问
+
+- **length()**: 获取字符串长度
+  ```java
+  String str = "Hello";
+  int len = str.length(); // 返回5
+  ```
+
+- **charAt(int index)**: 获取指定索引位置的字符
+  ```java
+  String str = "Hello";
+  char ch = str.charAt(2); // 返回'l'
+  ```
+
+- **toCharArray()**: 将字符串转换为字符数组
+  ```java
+  String str = "Hello";
+  char[] chars = str.toCharArray(); // 返回{'H','e','l','l','o'}
+  ```
+
+#### 2.2 查找和判断
+
+- **indexOf(String str)**: 查找子字符串第一次出现的位置
+  ```java
+  String str = "Hello world";
+  int index = str.indexOf("world"); // 返回6
+  ```
+
+- **indexOf(String str, int fromIndex)**: 从指定位置开始查找
+  ```java
+  String str = "Hello world Hello";
+  int index = str.indexOf("Hello", 2); // 返回12
+  ```
+
+- **lastIndexOf(String str)**: 查找子字符串最后一次出现的位置
+  ```java
+  String str = "Hello world Hello";
+  int index = str.lastIndexOf("Hello"); // 返回12
+  ```
+
+- **contains(CharSequence s)**: 判断是否包含指定字符序列
+  ```java
+  String str = "Hello world";
+  boolean contains = str.contains("world"); // 返回true
+  ```
+
+- **startsWith(String prefix)**: 判断是否以指定前缀开始
+  ```java
+  String str = "Hello world";
+  boolean starts = str.startsWith("Hello"); // 返回true
+  ```
+
+- **endsWith(String suffix)**: 判断是否以指定后缀结束
+  ```java
+  String str = "Hello world";
+  boolean ends = str.endsWith("world"); // 返回true
+  ```
+
+- **isEmpty()**: 判断字符串是否为空
+  ```java
+  String str = "";
+  boolean empty = str.isEmpty(); // 返回true
+  ```
+
+- **isBlank()** (Java 11+): 判断字符串是否为空或仅包含空白字符
+  ```java
+  String str = "  \t  ";
+  boolean blank = str.isBlank(); // 返回true
+  ```
+
+#### 2.3 字符串比较
+
+- **equals(Object obj)**: 比较字符串内容是否相等
+  ```java
+  String s1 = "hello";
+  String s2 = "hello";
+  boolean equal = s1.equals(s2); // 返回true
+  ```
+
+- **equalsIgnoreCase(String anotherString)**: 忽略大小写比较
+  ```java
+  String s1 = "Hello";
+  String s2 = "hello";
+  boolean equal = s1.equalsIgnoreCase(s2); // 返回true
+  ```
+
+- **compareTo(String anotherString)**: 按字典顺序比较两个字符串
+  ```java
+  String s1 = "apple";
+  String s2 = "banana";
+  int result = s1.compareTo(s2); // 返回负数，表示s1在s2之前
+  ```
+
+#### 2.4 字符串截取和分割
+
+- **substring(int beginIndex)**: 截取从指定索引到结尾的子字符串
+  ```java
+  String str = "Hello world";
+  String sub = str.substring(6); // 返回"world"
+  ```
+
+- **substring(int beginIndex, int endIndex)**: 截取指定范围的子字符串
+  ```java
+  String str = "Hello world";
+  String sub = str.substring(0, 5); // 返回"Hello"
+  ```
+
+- **split(String regex)**: 使用正则表达式分割字符串
+  ```java
+  String str = "apple,banana,orange";
+  String[] fruits = str.split(","); // 返回["apple", "banana", "orange"]
+  ```
+
+- **split(String regex, int limit)**: 限制分割次数
+  ```java
+  String str = "apple,banana,orange,grape";
+  String[] fruits = str.split(",", 3); // 返回["apple", "banana", "orange,grape"]
+  ```
+
+#### 2.5 字符串修改
+
+- **replace(char oldChar, char newChar)**: 替换所有指定字符
+  ```java
+  String str = "Hello";
+  String newStr = str.replace('l', 'L'); // 返回"HeLLo"
+  ```
+
+- **replace(CharSequence target, CharSequence replacement)**: 替换所有指定子字符串
+  ```java
+  String str = "Hello world";
+  String newStr = str.replace("world", "Java"); // 返回"Hello Java"
+  ```
+
+- **replaceAll(String regex, String replacement)**: 使用正则表达式替换
+  ```java
+  String str = "Hello123World456";
+  String newStr = str.replaceAll("\\d+", ""); // 返回"HelloWorld"
+  ```
+
+- **toLowerCase()**: 转换为小写
+  ```java
+  String str = "HELLO";
+  String lower = str.toLowerCase(); // 返回"hello"
+  ```
+
+- **toUpperCase()**: 转换为大写
+  ```java
+  String str = "hello";
+  String upper = str.toUpperCase(); // 返回"HELLO"
+  ```
+
+- **trim()**: 去除首尾空白字符
+  ```java
+  String str = "  Hello  ";
+  String trimmed = str.trim(); // 返回"Hello"
+  ```
+
+- **strip()** (Java 11+): 去除首尾空白字符（支持Unicode空白）
+  ```java
+  String str = "  Hello  ";
+  String stripped = str.strip(); // 返回"Hello"
+  ```
+
+### 3. char[]和String的转换
+
+#### 3.1 String转char[]
+
+```java
+String str = "Hello";
+char[] chars = str.toCharArray();
+// chars = {'H', 'e', 'l', 'l', 'o'}
+```
+
+#### 3.2 char[]转String
+
+```java
+// 方式1：使用构造函数
+char[] chars = {'H', 'e', 'l', 'l', 'o'};
+String str1 = new String(chars);
+// str1 = "Hello"
+
+// 方式2：使用构造函数并指定范围
+char[] chars = {'H', 'e', 'l', 'l', 'o', 'W', 'o', 'r', 'l', 'd'};
+String str2 = new String(chars, 0, 5);
+// str2 = "Hello"
+
+// 方式3：使用valueOf方法
+String str3 = String.valueOf(chars);
+// str3 = "Hello"
+```
+
+### 4. StringBuilder和StringBuffer
+
+由于String是不可变的，频繁的字符串拼接会创建多个对象，影响性能。可以使用StringBuilder（非线程安全）或StringBuffer（线程安全）进行高效的字符串操作。
+
+```java
+// 使用StringBuilder
+StringBuilder sb = new StringBuilder();
+sb.append("Hello");
+sb.append(" ");
+sb.append("World");
+String result = sb.toString(); // 返回"Hello World"
+
+// 常用方法
+StringBuilder sb = new StringBuilder("Hello");
+sb.insert(5, " Java"); // 插入字符串，结果为"Hello Java"
+sb.delete(5, 6); // 删除指定范围的字符，结果为"HelloJava"
+sb.reverse(); // 反转字符串，结果为"avaJolleH"
+sb.setCharAt(0, 'J'); // 设置指定位置的字符，结果为"JvaJolleH"
+sb.replace(1, 4, "a"); // 替换指定范围的字符串，结果为"JaJolleH"
+```
+
+### 5. 字符串的其他常用操作
+
+#### 5.1 字符串拼接
+
+```java
+// 使用+运算符（底层会转换为StringBuilder）
+String s1 = "Hello";
+String s2 = s1 + " World"; // 返回"Hello World"
+
+// 使用concat方法
+String s3 = s1.concat(" World"); // 返回"Hello World"
+
+// 使用join方法（Java 8+）
+String joined = String.join(", ", "apple", "banana", "orange"); // 返回"apple, banana, orange"
+```
+
+#### 5.2 字符串格式化
+
+```java
+// 使用format方法
+String formatted = String.format("Name: %s, Age: %d", "John", 25); // 返回"Name: John, Age: 25"
+
+// 常用格式说明符
+// %s - 字符串，%d - 整数，%f - 浮点数，%c - 字符，%b - 布尔值
+String num = String.format("%.2f", 3.14159); // 返回"3.14"
+```
+
+#### 5.3 字符串处理实例
+
+```java
+// 字符串反转
+public static String reverse(String str) {
+    return new StringBuilder(str).reverse().toString();
+}
+
+// 判断回文字符串
+public static boolean isPalindrome(String str) {
+    int left = 0;
+    int right = str.length() - 1;
+    
+    while (left < right) {
+        if (str.charAt(left) != str.charAt(right)) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+    
+    return true;
+}
+
+// 统计字符出现次数
+public static int countChar(String str, char ch) {
+    int count = 0;
+    for (char c : str.toCharArray()) {
+        if (c == ch) {
+            count++;
+        }
+    }
+    return count;
+}
+```
 
 ## 一、A+B（1）
 
