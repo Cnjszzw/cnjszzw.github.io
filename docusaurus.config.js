@@ -81,14 +81,6 @@ const config = {
     mermaid: true,
   },
 
-  //网易云的插件https问题，我加的
-  contentSecurityPolicy: `
-    default-src 'self';
-    frame-src https://music.163.com;  // 允许嵌入网易云音乐
-    media-src https://music.163.com;  // 允许加载音频资源
-    upgrade-insecure-requests;        // 强制升级 HTTP 到 HTTPS
-  `,
-
   //我自己添加的
   themes: [
     // ... Your other themes.
