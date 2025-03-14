@@ -54,7 +54,7 @@ const config = {
             'https://github.com/Cnjszzw/cnjszzw.github.io/tree/master/',
         },
         blog: {
-          blogSidebarTitle: '所有河流的入海口，都在文字里改道', // 修改标题
+          blogSidebarTitle: '河流的入海口，在文字里改道', // 修改标题
           blogSidebarCount: 'ALL', // 显示所有文章
           showReadingTime: true,
           feedOptions: {
