@@ -328,7 +328,163 @@ public static int countChar(String str, char ch) {
 }
 ```
 
-## 一、A+B（1）
+## 一、输入输出
+
+### 1. Scanner 类的基本用法
+
+Scanner 是 Java 中最常用的输入工具类，用于从标准输入、文件或字符串中读取数据。
+
+```java
+import java.util.Scanner;
+
+// 创建 Scanner 对象
+Scanner sc = new Scanner(System.in);
+```
+
+### 2. 基本数据类型的读取
+
+#### 2.1 整数类型
+```java
+// 读取整数
+int num = sc.nextInt();
+
+// 读取长整型
+long bigNum = sc.nextLong();
+
+// 读取短整型
+short smallNum = sc.nextShort();
+
+// 读取字节
+byte b = sc.nextByte();
+```
+
+#### 2.2 浮点数类型
+```java
+// 读取单精度浮点数
+float f = sc.nextFloat();
+
+// 读取双精度浮点数
+double d = sc.nextDouble();
+```
+
+#### 2.3 字符和字符串
+```java
+// 读取单个字符
+char c = sc.next().charAt(0);
+
+// 读取字符串（以空格为分隔符）
+String str = sc.next();
+
+// 读取整行字符串
+String line = sc.nextLine();
+```
+
+### 3. 判断输入是否有效
+
+```java
+// 判断是否还有下一个整数
+while (sc.hasNextInt()) {
+    int num = sc.nextInt();
+}
+
+// 判断是否还有下一个字符串
+while (sc.hasNext()) {
+    String str = sc.next();
+}
+
+// 判断是否还有下一行
+while (sc.hasNextLine()) {
+    String line = sc.nextLine();
+}
+
+// 判断是否还有下一个双精度浮点数
+while (sc.hasNextDouble()) {
+    double d = sc.nextDouble();
+}
+```
+
+### 4. 常见输入模式
+
+#### 4.1 单行输入
+```java
+// 读取一行数字，以空格分隔
+String[] nums = sc.nextLine().split(" ");
+for (String num : nums) {
+    int n = Integer.parseInt(num);
+}
+
+// 读取一行数字，以逗号分隔
+String[] nums = sc.nextLine().split(",");
+for (String num : nums) {
+    int n = Integer.parseInt(num);
+}
+```
+
+#### 4.2 多行输入
+```java
+// 读取多行，直到遇到空行
+while (sc.hasNextLine()) {
+    String line = sc.nextLine();
+    if (line.isEmpty()) break;
+    // 处理每一行
+}
+
+// 读取多行，直到遇到特定值
+while (true) {
+    int num = sc.nextInt();
+    if (num == 0) break;
+    // 处理每个数字
+}
+```
+
+### 5. 输出格式控制
+
+```java
+// 基本输出
+System.out.println("Hello");  // 输出并换行
+System.out.print("Hello");    // 输出不换行
+System.out.printf("Hello");   // 格式化输出
+
+// 格式化输出示例
+int num = 42;
+double pi = 3.14159;
+System.out.printf("数字：%d，圆周率：%.2f%n", num, pi);
+// 输出：数字：42，圆周率：3.14
+
+// 常用格式说明符
+// %d - 整数
+// %f - 浮点数
+// %s - 字符串
+// %c - 字符
+// %b - 布尔值
+// %n - 换行符
+```
+
+### 6. 注意事项
+
+1. **混合使用 nextInt() 和 nextLine()**
+```java
+Scanner sc = new Scanner(System.in);
+int n = sc.nextInt();
+sc.nextLine();  // 清除换行符
+String line = sc.nextLine();  // 正确读取下一行
+```
+
+2. **输入缓冲区处理**
+```java
+// 清空输入缓冲区
+while (sc.hasNext()) {
+    sc.next();
+}
+```
+
+3. **关闭 Scanner**
+```java
+// 使用完毕后关闭
+sc.close();
+```
+
+## 二、A+B（1）
 
 ![image-20250314175427798](./assets/image-20250314175427798.png)
 
