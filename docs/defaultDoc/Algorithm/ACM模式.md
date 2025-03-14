@@ -4,7 +4,7 @@
 
 [牛客竞赛: OJ在线编程常见输入输出练习场](https://ac.nowcoder.com/acm/contest/5652?from=hr_test#question)
 
-## 零、常识
+## 〇、常识
 
 - **`LinkedList`、`HashSet`、`TreeMap`、`Arrays` 等** ：均属于 `java.util` 包，需显式导入。
 
@@ -38,7 +38,7 @@
 | `char`    | `Character` | `Character c = 'A';`   | `char c = new Character('A');`      |
 | `boolean` | `Boolean`   | `Boolean bool = true;` | `boolean bool = new Boolean(true);` |
 
-## 〇、字符串
+## 一、字符串
 
 ### 1. String的基本特性
 
@@ -328,7 +328,7 @@ public static int countChar(String str, char ch) {
 }
 ```
 
-## 一、输入输出
+## 二、输入输出
 
 ### 1. Scanner 类的基本用法
 
@@ -484,7 +484,7 @@ while (sc.hasNext()) {
 sc.close();
 ```
 
-## 二、A+B（1）
+## 三、A+B（1）
 
 ![image-20250314175427798](./assets/image-20250314175427798.png)
 
@@ -503,7 +503,7 @@ public class Main{
 }
 ```
 
-## 二、A+B（2）
+## 四、A+B（2）
 
 ![image-20250314175946483](./assets/image-20250314175946483.png)
 
@@ -527,7 +527,7 @@ public class Main{
 }
 ```
 
-## 三、A+B（3）
+## 五、A+B（3）
 
 ![image-20250314181348397](./assets/image-20250314181348397.png)
 
@@ -549,7 +549,7 @@ public class Main{
 }
 ```
 
-## 四、A+B（4）
+## 六、A+B（4）
 
 ![image-20250314191900997](./assets/image-20250314191900997.png)
 
@@ -574,7 +574,7 @@ public class Main{
 }
 ```
 
-## 五、A+B（5）
+## 七、A+B（5）
 
 ![image-20250314192237117](./assets/image-20250314192237117.png)
 
@@ -597,7 +597,7 @@ public class Main{
 }
 ```
 
-## 六、A+B（6）
+## 八、A+B（6）
 
 ![image-20250314192926921](./assets/image-20250314192926921.png)
 
@@ -620,7 +620,7 @@ public class Main{
 }
 ```
 
-## 七、A+B（7）
+## 九、A+B（7）
 
 ![image-20250314203946264](./assets/image-20250314203946264.png)
 
@@ -643,7 +643,7 @@ public class Main{
 }
 ```
 
-## 八、字符串排序（1）
+## 十、字符串排序（1）
 
 ![image-20250314205526008](./assets/image-20250314205526008.png)
 
@@ -673,7 +673,7 @@ public class Main{
 }
 ```
 
-## 九、字符串排序（2）
+## 十一、字符串排序（2）
 
 ![image-20250314210424327](./assets/image-20250314210424327.png)
 
@@ -699,7 +699,7 @@ public class Main{
 }
 ```
 
-## 十、字符串排序
+## 十二、字符串排序
 
 ![image-20250314211128236](./assets/image-20250314211128236.png)
 
