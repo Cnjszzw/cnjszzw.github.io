@@ -6,7 +6,7 @@
 
 ## 零、常识
 
-- **`LinkedList`、`HashSet`、`TreeMap` 等** ：均属于 `java.util` 包，需显式导入。
+- **`LinkedList`、`HashSet`、`TreeMap`、`Arrays` 等** ：均属于 `java.util` 包，需显式导入。
 
 - **`String`、`Math`、`System` 等** ：属于 `java.lang` 包，无需导入
 
@@ -16,6 +16,7 @@
   import java.util.LinkedList
   import java.util.HashMap
   import java.util.ArrayList
+  import java.util.Arrays
   //一次性导入
   import java.util.*;
   ```
@@ -36,8 +37,6 @@
 | `double`  | `Double`    | `Double d = 2.718;`    | `double d = new Double(2.718);`     |
 | `char`    | `Character` | `Character c = 'A';`   | `char c = new Character('A');`      |
 | `boolean` | `Boolean`   | `Boolean bool = true;` | `boolean bool = new Boolean(true);` |
-
--  **`String`** 不是基本数据类型,是一个引用类型，只不过做了优化，放在常量池中。对象一旦创建，内容不可修改。任何操作（如拼接）都会生成新对象：
 
 ## 〇、字符串
 
@@ -154,12 +153,13 @@ String s2 = new String("hello"); // 使用构造函数，在堆中创建对象
   String sub = str.substring(6); // 返回"world"
   ```
 
-- **substring(int beginIndex, int endIndex)**: 截取指定范围的子字符串
+- **substring(int beginIndex, int endIndex)**: 截取指定范围的子字符串，左闭右开
+  
   ```java
   String str = "Hello world";
   String sub = str.substring(0, 5); // 返回"Hello"
   ```
-
+  
 - **split(String regex)**: 使用正则表达式分割字符串
   ```java
   String str = "apple,banana,orange";
@@ -259,7 +259,7 @@ String result = sb.toString(); // 返回"Hello World"
 // 常用方法
 StringBuilder sb = new StringBuilder("Hello");
 sb.insert(5, " Java"); // 插入字符串，结果为"Hello Java"
-sb.delete(5, 6); // 删除指定范围的字符，结果为"HelloJava"
+sb.delete(5, 6); // 删除指定范围的字符，结果为"HelloJava"，左闭右开
 sb.reverse(); // 反转字符串，结果为"avaJolleH"
 sb.setCharAt(0, 'J'); // 设置指定位置的字符，结果为"JvaJolleH"
 sb.replace(1, 4, "a"); // 替换指定范围的字符串，结果为"JaJolleH"
@@ -466,15 +466,106 @@ public class Main{
 
 ## 七、A+B（7）
 
+![image-20250314203946264](./assets/image-20250314203946264.png)
 
+```java
+import java.util.Scanner;
 
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNextLine()){
+            String[] array = sc.nextLine().split(" ");
+            int res = 0;
+            for(String s : array){
+                res += Integer.valueOf(s);
+            }
+            System.out.println(res);
+        }
+        
+    }
+}
+```
 
+## 八、字符串排序（1）
 
+![image-20250314205526008](./assets/image-20250314205526008.png)
 
+```java
+import java.util.Scanner;
+import java.util.Arrays;
 
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int count = sc.nextInt();
+        //这行代码 sc.nextLine(); 的作用是：
+        //清除输入缓冲区中由 sc.nextInt() 留下的换行符，避免影响后续的 sc.nextLine() 操作。
+        //它是一个常见的处理方式，尤其是在混合使用 sc.nextInt() 和 sc.nextLine() 时。
+        //如果不加这行代码，程序可能会出现逻辑错误，比如无法正确读取用户输入的字符串数据。
+        sc.nextLine();
+        String[] array = sc.nextLine().split(" ");
+        Arrays.sort(array);
+        for(int i = 0 ; i < array.length ; i++){
+            System.out.print(array[i]);
+            if(i < array.length - 1){
+                System.out.print(" ");
+            }
+        }
 
+    }
+}
+```
 
+## 九、字符串排序（2）
 
+![image-20250314210424327](./assets/image-20250314210424327.png)
 
+```java
+import java.util.Scanner;
+import java.util.Arrays;
 
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNextLine()){
+            String[] array = sc.nextLine().split(" ");
+            Arrays.sort(array);
+            for(int i = 0 ; i < array.length ; i++){
+                System.out.print(array[i]);
+                if(i != array.length -1 ){
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+## 十、字符串排序
+
+![image-20250314211128236](./assets/image-20250314211128236.png)
+
+```java
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNextLine()){
+            String[] array = sc.nextLine().split(",");
+            Arrays.sort(array);
+            for(int i = 0 ; i < array.length ; i++){
+                System.out.print(array[i]);
+                if(array.length - 1 != i){
+                    System.out.print(',');
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+```
 
