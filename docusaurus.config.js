@@ -173,11 +173,12 @@ const config = {
           //   position: 'left',
           //   label: '文章',
           // },
-          {
-            to: '/tools/JsonJsOutput', // 路由路径
-            label: '工具', // 标签名称
-            position: 'left', // 标签位置
-          },
+          // 暂时屏蔽这个工具入口，这个在流金岁月公司写的，这个工具不具有适用性
+          // {
+          //   to: '/tools/JsonJsOutput', // 路由路径
+          //   label: '工具', // 标签名称
+          //   position: 'left', // 标签位置
+          // },
           // blog的路由
           {to: '/blog', label: '博客', position: 'left'},
           {
