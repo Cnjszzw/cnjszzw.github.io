@@ -166,12 +166,13 @@ const config = {
             position: 'left',
             label: '面试',
           },
-          {
-            type: 'docSidebar',
-            sidebarId: 'articleDoc',
-            position: 'left',
-            label: '文章',
-          },
+          // 暂时屏蔽这个入口
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'articleDoc',
+          //   position: 'left',
+          //   label: '文章',
+          // },
           {
             to: '/tools/JsonJsOutput', // 路由路径
             label: '工具', // 标签名称
