@@ -205,7 +205,7 @@
 .section h2 {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
 
@@ -213,12 +213,12 @@
   margin-top: -1rem;
 }
 
-.bioSection h2 {
-  margin-top: 2.5rem;
+.miscSection {
+  margin-top: -1rem;
 }
 
-.miscSection {
-  margin-top: 0;
+.bioSection h2 {
+  margin-top: 2.5rem;
 }
 
 .miscSection h2 {
