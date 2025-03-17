@@ -8,7 +8,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 2rem;
   gap: 2rem;
 }
@@ -43,8 +43,8 @@
 }
 
 .avatarContainer {
-  width: 180px;
-  height: 180px;
+  width: 130px;
+  height: 130px;
   border-radius: 8px;
   overflow: hidden;
   flex-shrink: 0;
@@ -70,11 +70,11 @@
 }
 
 .avatarContainer:hover .avatarFront {
-  opacity: 0;
+  opacity: 1;
 }
 
 .avatarContainer:hover .avatarBack {
-  opacity: 1;
+  opacity: 0;
 }
 
 .socials {
@@ -179,8 +179,8 @@
   }
 
   .avatarContainer {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     margin-bottom: 1.5rem;
   }
 
@@ -223,4 +223,4 @@
 
 .miscSection h2 {
   margin-top: 0.5rem;
-} 
+}
