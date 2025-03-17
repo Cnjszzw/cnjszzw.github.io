@@ -6,13 +6,13 @@ import { Icon } from '@iconify/react';
 
 // 预加载所有图标
 const preloadIcons = [
-  'academicons:简历',
   'ion:mail-outline',
   'eva:github-outline',
   'carbon:logo-x',
   'ant-design:zhihu-outlined',
-  'ri:maimai-line',
-  'ri:bilibili-line'
+  'ri:bilibili-line',
+  'ri:contacts-line',
+  'ri:file-paper-2-line'
 ];
 
 const info = {
@@ -22,10 +22,6 @@ const info = {
   avatarBack: "/img/avatar_s.jpg",
   tltr: "后端开发是主场，测试开发玩过票，前端开发顺手撸.",
   socials: [
-    {
-      icon: "i-academicons:简历",
-      link: "/files/cv/zh.pdf"
-    },
     {
       icon: "i-ion:mail-outline",
       link: "mailto:1427226264@qq.com"
@@ -43,12 +39,18 @@ const info = {
       link: "https://www.zhihu.com/people/zhao-zhi-wen-58-15"
     },
     {
-      icon: "i-ri:maimai-line",
-      link: "https://maimai.cn/profile/detail?dstu=231439153"
+      icon: "i-ri-bilibili-line",
+      link: "https://space.bilibili.com/35762084?spm_id_from=333.1007.0.0"
     },
     {
-      icon: "i-ri:bilibili-line",
-      link: "https://space.bilibili.com/35762084?spm_id_from=333.1007.0.0"
+      icon: "i-ri-contacts-line",
+      link: "https://maimai.cn/profile/detail?dstu=231439153",
+      name: "脉脉"
+    },
+    {
+      icon: "i-ri-file-paper-2-line",
+      link: "/files/cv/zh.pdf",
+      name: "简历"
     }
   ]
 };
@@ -88,7 +90,8 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {social.name || <Icon icon={social.icon.replace('i-', '')} width="24" height="24" />}
+                  <Icon icon={social.icon.replace('i-', '')} width="24" height="24" />
+                  {social.name && <span className={styles.socialName}>{social.name}</span>}
                 </a>
               ))}
             </div>
@@ -107,7 +110,7 @@ export default function Home() {
             <p><a href="http://cnjszzw.github.io">INFO.CENTER</a>是我的个人网站，这里不仅是我的博客，也是一个集合文档、工具与技术分享的平台。欢迎探索！</p>
           </section>
 
-          <section className={styles.section}>
+          <section className={`${styles.section} ${styles.miscSection}`}>
             <h2>杂项</h2>
             <ul className={styles.miscList}>
               <li>🌐 该<a href="https://github.com/Cnjszzw/cnjszzw.github.io">个人网站</a>基于<a href="https://docusaurus.io/">Docusaurus</a>构建</li>

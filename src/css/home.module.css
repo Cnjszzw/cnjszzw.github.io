@@ -94,6 +94,7 @@
   background-color: var(--ifm-color-emphasis-100);
   text-decoration: none;
   transition: all 0.2s ease;
+  gap: 0.5rem;
 }
 
 .socialLink:hover {
@@ -102,8 +103,8 @@
   text-decoration: none;
 }
 
-.socialLink i {
-  font-size: 1.1rem;
+.socialName {
+  color: var(--ifm-color-emphasis-700);
 }
 
 .content {
@@ -202,12 +203,20 @@
 }
 
 .section h2 {
-  margin-top: 0.25rem;
-  margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 .bioSection {
-  margin-top: -2rem;
+  margin-top: -1rem;
+}
+
+.bioSection h2 {
+  margin-top: 1.5rem;
+}
+
+.miscSection {
+  margin-top: 2rem;
 } 
