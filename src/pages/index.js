@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from '@site/src/css/home.module.css';
+import { Icon } from '@iconify/react';
 
-// 直接从frontmatter中获取数据
+// 预加载所有图标
+const preloadIcons = [
+  'academicons:cv',
+  'ion:mail-outline',
+  'eva:github-outline',
+  'radix-icons:linkedin-logo',
+  'academicons:google-scholar',
+  'carbon:logo-x',
+  'ant-design:zhihu-outlined',
+  'ic:twotone-catching-pokemon',
+  'mingcute:dashboard-4-line'
+];
+
 const info = {
   name: "赵志文",
   subname: "Zhiwen Zhao",
@@ -55,6 +68,16 @@ const info = {
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
 
+  // 在客户端预加载图标
+  useEffect(() => {
+    preloadIcons.forEach(icon => {
+      if (typeof window !== 'undefined') {
+        const img = new window.Image();
+        img.src = `https://api.iconify.design/${icon.split(':')[0]}/${icon.split(':')[1]}.svg`;
+      }
+    });
+  }, []);
+
   return (
     <Layout
       title={`hi@${info.name}`}
@@ -77,7 +100,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {social.name || <i className={social.icon}></i>}
+                  {social.name || <Icon icon={social.icon.replace('i-', '')} width="24" height="24" />}
                 </a>
               ))}
             </div>
@@ -90,30 +113,18 @@ export default function Home() {
         </div>
 
         <div className={styles.content}>
-          <section className={styles.section}>
-            <h2>Bio</h2>
-            <p>I am a Ph.D. student in the <a href="https://www.eecs.psu.edu/">Computer Science and Engineering</a> department at <a href="https://www.psu.edu/">Pennsylvania State University</a> advised by Prof. <a href="https://www.cse.psu.edu/~gik2/">George Kesidis</a> and Prof. <a href="https://louise-lulin.github.io/">Lu Lin</a>. My current research focuses on trustworthiness and reliability in multimodal foundation models.</p>
-            <p>Previously, I received my master's degree in <a href="https://www.bu.edu/cs/">Computer Science</a> from <a href="https://www.bu.edu/">Boston University</a> and my bachelor's degree in <a href="http://sse.tongji.edu.cn/">Software Engineering</a> from <a href="https://www.tongji.edu.cn/">Tongji University</a>. I also interned at Kuaishou.</p>
-            <p>By the way, take a look at <a href="https://www.bu.edu/cs/">some things</a> I've built as a web developer, featuring <a href="https://ohmycv.app">ohmycv.app</a> - a sleek, in-browser, privacy-first Markdown resume builder.</p>
+          <section className={`${styles.section} ${styles.bioSection}`}>
+            <h2>简介</h2>
+            <p>嗨👋，我是赵志文，2025年1月硕士毕业于<a href="https://www.xijing.edu.cn/">西京学院</a>电子信息（<a href="https://jsjxy.xijing.edu.cn/">计算机技术方向</a>），在<a href="https://jsjxy.xijing.edu.cn/info/1005/2094.htm">郝东来教授</a>指导下专注于目标检测领域的算法研究。本科阶段就读于<a href="https://www.sdnu.edu.cn/">山东师范大学</a>艺术学（<a href="http://www.cbxy.sdnu.edu.cn/">广播电视编导</a>），兼具艺术与计算机技术的<strong>跨学科背景</strong>。在校期间，也曾经<a href="https://www.bjljsy.com/">流金科技</a>、<a href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%A2?fromModule=lemma_search-box">美团</a>、<a href="https://baike.baidu.com/item/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9/8018053">哔哩哔哩</a>等公司实习，担任过后端开发、测试开发等实习生职位。</p>
+            <p><a href="http://cnjszzw.github.io">INFO.CENTER</a>是我的个人网站，这里不仅是我的博客，也是一个集合文档、工具与技术分享的平台。欢迎探索！</p>
           </section>
 
           <section className={styles.section}>
-            <h2>Talks</h2>
-            <ul className={styles.talks}>
-              <li><a href="https://www.bu.edu/cs/">Meta / Few-shot Learning</a>, Kuaishou, 08/2021</li>
-              <li><a href="https://www.bu.edu/cs/">Continual Learning: Meta Continual Learning & Task Free Settings</a>, Peking University, 08/2020</li>
-            </ul>
-          </section>
-
-          <section className={styles.section}>
-            <h2>Miscellaneous</h2>
+            <h2>杂项</h2>
             <ul className={styles.miscList}>
-              <li>🚀 This <a href="https://github.com/Renovamen/renovamen.github.io">personal website</a> is built with <a href="https://astro.build/">Astro</a>, <a href="https://www.solidjs.com/">Solid</a> and <a href="https://github.com/antfu/unocss">UnoCSS</a></li>
-              <li>🧐 <i>Renovamen</i> is a Latin word means <i>renewal</i></li>
-              <li>🖥 Ex-OIer/ACMer</li>
-              <li>🥎 Used to be a member of the softball team of Tongji University</li>
-              <li>🌭 My dream: <code>while(sleeping){'{'} money++; {'}'}</code></li>
-              <li>🕹️ Currently interested in <i>No Man's Sky</i> and <i>Minecraft</i></li>
+              <li>🌐 该<a href="https://github.com/Cnjszzw/cnjszzw.github.io">个人网站</a>基于<a href="https://docusaurus.io/">Docusaurus</a>构建</li>
+              <li>📺 追剧清单：<a href="https://movie.douban.com/subject/6142597/">《新闻编辑室》</a>、  <a href="https://movie.douban.com/subject/36151693/">《不够善良的我们》</a></li>
+              <li>🎮 游戏收藏：<a href="https://store.steampowered.com/app/646570/">《杀戮尖塔》</a>、<a href="https://store.steampowered.com/app/329050">《鬼泣4》</a></li>
             </ul>
           </section>
         </div>

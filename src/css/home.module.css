@@ -195,4 +195,19 @@
 /* 暗色主题优化 */
 [data-theme='dark'] .markdown code {
   background: var(--ifm-color-emphasis-200);
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.bioSection {
+  margin-top: -1.5rem;
 } 
