@@ -1,19 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from '@site/src/css/home.module.css';
-import { Icon } from '@iconify/react';
-
-// 预加载所有图标
-const preloadIcons = [
-  'ion:mail-outline',
-  'eva:github-outline',
-  'carbon:logo-x',
-  'ant-design:zhihu-outlined',
-  'ri:bilibili-line',
-  'ri:contacts-line',
-  'ri:file-paper-2-line'
-];
+import Icons from '@site/src/components/Icons';
 
 const info = {
   name: "赵志文",
@@ -23,32 +12,32 @@ const info = {
   tltr: "后端开发是主场，测试质量守门员，前端体验缝合怪.",
   socials: [
     {
-      icon: "i-ion:mail-outline",
+      icon: "ion:mail-outline",
       link: "mailto:1427226264@qq.com"
     },
     {
-      icon: "i-eva:github-outline",
+      icon: "eva:github-outline",
       link: "https://github.com/Cnjszzw"
     },
     {
-      icon: "i-carbon:logo-x",
+      icon: "carbon:logo-x",
       link: "https://x.com/cynicil"
     },
     {
-      icon: "i-ant-design:zhihu-outlined",
+      icon: "ant-design:zhihu-outlined",
       link: "https://www.zhihu.com/people/zhao-zhi-wen-58-15"
     },
     {
-      icon: "i-ri-bilibili-line",
+      icon: "ri:bilibili-line",
       link: "https://space.bilibili.com/35762084?spm_id_from=333.1007.0.0"
     },
     {
-      icon: "i-ri-contacts-line",
+      icon: "ri:contacts-line",
       link: "https://maimai.cn/profile/detail?dstu=231439153",
       name: "脉脉"
     },
     {
-      icon: "i-ri-file-paper-2-line",
+      icon: "ri:file-paper-2-line",
       link: "/files/cv/zh.pdf",
       name: "简历"
     }
@@ -58,15 +47,7 @@ const info = {
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
 
-  // 在客户端预加载图标
-  useEffect(() => {
-    preloadIcons.forEach(icon => {
-      if (typeof window !== 'undefined') {
-        const img = new window.Image();
-        img.src = `https://api.iconify.design/${icon.split(':')[0]}/${icon.split(':')[1]}.svg`;
-      }
-    });
-  }, []);
+
 
   return (
     <Layout
@@ -90,7 +71,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Icon icon={social.icon.replace('i-', '')} width="24" height="24" />
+                  {Icons[social.icon]()}
                   {social.name && <span className={styles.socialName}>{social.name}</span>}
                 </a>
               ))}
