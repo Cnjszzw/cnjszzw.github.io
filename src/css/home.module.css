@@ -48,12 +48,33 @@
   border-radius: 8px;
   overflow: hidden;
   flex-shrink: 0;
+  position: relative;
 }
 
 .avatar {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease;
+}
+
+.avatarFront {
+  opacity: 1;
+}
+
+.avatarBack {
+  opacity: 0;
+}
+
+.avatarContainer:hover .avatarFront {
+  opacity: 0;
+}
+
+.avatarContainer:hover .avatarBack {
+  opacity: 1;
 }
 
 .socials {
@@ -89,90 +110,58 @@
   max-width: 100%;
 }
 
-.section {
-  margin-bottom: 3rem;
+/* Markdown 内容样式 */
+.markdown {
+  color: var(--ifm-color-emphasis-800);
 }
 
-.section h2 {
+.markdown h2 {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin: 2.5rem 0 1.5rem;
   color: var(--ifm-color-emphasis-900);
 }
 
-.sectionNote {
-  font-size: 1rem;
-  font-weight: normal;
-  color: var(--ifm-color-emphasis-600);
+.markdown h2:first-child {
+  margin-top: 0;
 }
 
-.section p {
+.markdown p {
   font-size: 1rem;
   line-height: 1.8;
-  color: var(--ifm-color-emphasis-800);
   margin-bottom: 1rem;
 }
 
-.section a {
+.markdown a {
   color: var(--ifm-color-primary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.section a:hover {
+.markdown a:hover {
   text-decoration: underline;
 }
 
-.papers {
-  display: grid;
-  gap: 2rem;
-}
-
-.paper {
-  display: flex;
-  gap: 1.5rem;
-  padding: 1rem;
-  border-radius: 8px;
-  background: var(--ifm-color-emphasis-100);
-}
-
-.paper img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.paperContent h3 {
-  font-size: 1.1rem;
-  margin: 0 0 0.5rem;
-  color: var(--ifm-color-emphasis-900);
-}
-
-.paperContent p {
-  font-size: 0.9rem;
-  margin: 0 0 0.25rem;
-  color: var(--ifm-color-emphasis-700);
-}
-
-.paperType {
-  font-style: italic;
-}
-
-.miscList {
+.markdown ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.miscList li {
+.markdown li {
   font-size: 1rem;
   margin-bottom: 0.75rem;
-  color: var(--ifm-color-emphasis-800);
 }
 
-.miscList i {
+.markdown i {
   font-style: italic;
+}
+
+.markdown code {
+  background: var(--ifm-color-emphasis-100);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
 }
 
 /* 响应式设计 */
@@ -201,21 +190,9 @@
   .socials {
     justify-content: center;
   }
-
-  .paper {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1.5rem;
-  }
-
-  .paper img {
-    width: 150px;
-    height: 150px;
-  }
 }
 
 /* 暗色主题优化 */
-[data-theme='dark'] .paper {
+[data-theme='dark'] .markdown code {
   background: var(--ifm-color-emphasis-200);
 } 

@@ -34,44 +34,14 @@ I am a Ph.D. student in the [Computer Science and Engineering](https://www.eecs.
 
 Previously, I received my master's degree in [Computer Science](https://www.bu.edu/cs/) from [Boston University](https://www.bu.edu/) and my bachelor's degree in [Software Engineering](http://sse.tongji.edu.cn/) from [Tongji University](https://www.tongji.edu.cn/). I also interned at Kuaishou.
 
-By the way, take a look at [some things](/projects) I've built as a web developer, featuring [ohmycv.app](https://ohmycv.app) - a sleek, in-browser, privacy-first Markdown resume builder.
-
-
-## Selected Publications <span text-base>(see the <a href="/publications">full list</a> or <a href="https://scholar.google.com/citations?user=RuW6xgMAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>)</span>
-
-:::paper[/img/publications/shiftdc.png]
-**Understanding and Rectifying Safety Perception Distortion in VLMs**
-
-<u>Xiaohan Zou</u>, Jian Kang, George Kesidis, Lu Lin
-
-*Preprint*
-
-[arXiv:2502.13095](https://arxiv.org/abs/2502.13095)
-:::
-
-:::paper[/img/publications/costep.png]
-**Learning Conditional Space-Time Prompt Distributions for Video Class-Incremental Learning**
-
-<u>Xiaohan Zou</u>, Shu Zhao, Wenchao Ma, Huijuan Xu
-
-*Preprint*
-:::
-
-:::paper[/img/publications/rebq.png]
-**Reconstruct before Query: Continual Missing Modality Learning with Decomposed Prompt Collaboration**
-
-Shu Zhao, <u>Xiaohan Zou</u>, Tan Yu, Huijuan Xu
-
-*Preprint*
-
-[arXiv:2403.11373](https://arxiv.org/abs/2403.11373) / [code](https://github.com/Tree-Shu-Zhao/RebQ.pytorch)
-:::
+By the way, take a look at [some things](https://www.bu.edu/cs/) I've built as a web developer, featuring [ohmycv.app](https://ohmycv.
+app) - a sleek, in-browser, privacy-first Markdown resume builder.
 
 
 ## Talks
 
-- [Meta / Few-shot Learning](/files/talks/2021-08-meta-learning.pdf), Kuaishou, 08/2021
-- [Continual Learning: Meta Continual Learning & Task Free Settings](/files/talks/2020-08-continual-learning.pdf), Peking University, 08/2020
+- [Meta / Few-shot Learning](https://www.bu.edu/cs/), Kuaishou, 08/2021
+- [Continual Learning: Meta Continual Learning & Task Free Settings](https://www.bu.edu/cs/), Peking University, 08/2020
 
 
 ## Miscellaneous
