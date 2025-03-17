@@ -1,17 +1,12 @@
 import React from 'react';
 
+import styles from './styles.module.css';
+
 const IconWrapper = ({ children, size = 24 }) => (
-  <div style={{ 
-    width: 24, 
-    height: 24, 
-    display: 'inline-flex', 
-    alignItems: 'center', 
-    justifyContent: 'center',
-    '@media (max-width: 480px)': {
-      width: Math.max(24, Math.min(size * 0.8, 32)),
-      height: Math.max(24, Math.min(size * 0.8, 32))
-    }
+  <div className={styles.iconWrapper} style={{
+    '--icon-size': `${Math.max(24, Math.min(size * 0.8, 32))}px`
   }}>
+
     {children}
   </div>
 );
