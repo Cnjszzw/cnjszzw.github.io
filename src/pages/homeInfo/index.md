@@ -27,7 +27,7 @@ socials:
 ## 简介
 
 嗨👋，我是赵志文，2025年1月硕士毕业于[西京学院](https://www.xijing.edu.cn/)电子信息（[计算机技术方向](https://jsjxy.xijing.edu.cn/)），在[郝东来教授](https://jsjxy.xijing.edu.
-cn/info/1005/2094.htm)指导下专注于目标检测领域的算法研究。本科阶段就读于[山东师范大学](https://www.sdnu.edu.cn/)艺术学（[广播电视编导](http://www.cbxy.sdnu.edu.cn/)），兼具艺术与计算机技术的**跨学科背景**。在校期间，也曾经[流金科技](https://www.bjljsy.com/)、[美团](https://baike.baidu.com/item/%E7%BE%8E%E5%9B%A2?fromModule=lemma_search-box)、 [哔哩哔哩](https://baike.baidu.
+cn/info/1005/2094.htm)指导下专注于目标检测领域的算法研究。本科阶段就读于[山东师范大学](https://www.sdnu.edu.cn/)艺术学（[广播电视编导](http://www.cbxy.sdnu.edu.cn/)），兼具艺术与计算机技术的**跨学科背景**。在校期间，也曾经在[流金科技](https://www.bjljsy.com/)、[美团](https://baike.baidu.com/item/%E7%BE%8E%E5%9B%A2?fromModule=lemma_search-box)、 [哔哩哔哩](https://baike.baidu.
 com/item/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9/8018053)等公司实习，担任过后端开发、测试开发等实习生职位。
 
 [INFO.CENTER](http://cnjszzw.github.io)是我的个人网站，这里不仅是我的博客，也是一个集合文档、工具与技术分享的平台。欢迎探索！
