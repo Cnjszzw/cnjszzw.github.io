@@ -5,16 +5,14 @@ avatarFront: /img/avatar_s.jpg
 avatarBack: /img/avatar_s.jpg
 tltr: 后端开发是主场，测试开发玩过票，前端开发顺手撸.
 socials:
-  - icon: i-academicons:cv
-    link: /files/25届-硕士-西京学院-计算机专业-赵志文.pdf
+  - icon: i-academicons:简历
+    link: /files/cv/zh.pdf
   - icon: "i-ion:mail-outline"
     link: "mailto:1427226264@qq.com"
   - icon: i-eva:github-outline
     link: https://github.com/Cnjszzw
   - icon: i-radix-icons:linkedin-logo
     link: https://www.linkedin.com/in/xiaohan-zou
-  - icon: i-academicons:google-scholar
-    link: https://scholar.google.com/citations?user=RuW6xgMAAAAJ
   - icon: i-carbon:logo-x
     link: https://www.twitter.com/renovamen_zxh
   - icon: i-ant-design:zhihu-outlined

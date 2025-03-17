@@ -26,7 +26,7 @@ const info = {
   socials: [
     {
       icon: "i-academicons:cv",
-      link: "/files/25届-硕士-西京学院-计算机专业-赵志文.pdf"
+      link: "/files/zh.pdf"
     },
     {
       icon: "i-ion:mail-outline",
