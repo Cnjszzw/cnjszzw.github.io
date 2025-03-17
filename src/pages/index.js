@@ -63,7 +63,7 @@ export default function Home() {
         <div className={styles.header}>
           <div className={styles.intro}>
             <h1 className={styles.greeting}>
-              Hello, this is
+              你好，我是
               <div className={styles.name}>{info.name} <span className={styles.subname}>({info.subname})</span>.</div>
             </h1>
             <p className={styles.tltr}>{info.tltr}</p>

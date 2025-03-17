@@ -1,9 +1,9 @@
 ---
-name: Zhiwen Zhao
-subname: 赵志文
+name: 赵志文
+subname: Zhiwen Zhao
 avatarFront: /img/avatar_s.jpg
 avatarBack: /img/avatar_s.jpg
-tltr: I do machine learning by day and build things for the web by night.
+tltr: 后端开发是主场，测试开发玩过票，前端开发顺手撸.
 socials:
   - icon: i-academicons:cv
     link: /files/25届-硕士-西京学院-计算机专业-赵志文.pdf
