@@ -5,8 +5,9 @@ avatarFront: /img/avatar_s.jpg
 avatarBack: /img/avatar_s.jpg
 tltr: 后端开发是主场，测试开发玩过票，前端开发顺手撸.
 socials:
-  - icon: i-academicons:简历
+  - icon: i-academicons
     link: /files/cv/zh.pdf
+    name: 简历
   - icon: "i-ion:mail-outline"
     link: "mailto:1427226264@qq.com"
   - icon: i-eva:github-outline
@@ -15,8 +16,9 @@ socials:
     link: https://x.com/cynicil
   - icon: i-ant-design:zhihu-outlined
     link: https://www.zhihu.com/people/zhao-zhi-wen-58-15
-  - icon: i-ri-maimai-line  # 脉脉图标
-    link: https://maimai.cn/profile/detail?dstu=231439153  # 替换为实际链接
+  - icon: i-ri-maimai-line
+    link: https://maimai.cn/profile/detail?dstu=231439153
+    name: 脉
   - icon: i-ri-bilibili-line  # B站图标
     link: https://space.bilibili.com/35762084?spm_id_from=333.1007.0.0  # 替换为实际ID
 ---

@@ -9,7 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   gap: 2rem;
 }
 
@@ -202,12 +202,12 @@
 }
 
 .section h2 {
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
   margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: 600;
 }
 
 .bioSection {
-  margin-top: -1.5rem;
+  margin-top: -2rem;
 } 

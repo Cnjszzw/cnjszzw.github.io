@@ -6,15 +6,13 @@ import { Icon } from '@iconify/react';
 
 // 预加载所有图标
 const preloadIcons = [
-  'academicons:cv',
+  'academicons:简历',
   'ion:mail-outline',
   'eva:github-outline',
-  'radix-icons:linkedin-logo',
-  'academicons:google-scholar',
   'carbon:logo-x',
   'ant-design:zhihu-outlined',
-  'ic:twotone-catching-pokemon',
-  'mingcute:dashboard-4-line'
+  'ri:maimai-line',
+  'ri:bilibili-line'
 ];
 
 const info = {
@@ -25,8 +23,8 @@ const info = {
   tltr: "后端开发是主场，测试开发玩过票，前端开发顺手撸.",
   socials: [
     {
-      icon: "i-academicons:cv",
-      link: "/files/zh.pdf"
+      icon: "i-academicons:简历",
+      link: "/files/cv/zh.pdf"
     },
     {
       icon: "i-ion:mail-outline",
@@ -37,30 +35,20 @@ const info = {
       link: "https://github.com/Cnjszzw"
     },
     {
-      icon: "i-radix-icons:linkedin-logo",
-      link: "https://www.linkedin.com/in/xiaohan-zou"
-    },
-    {
-      icon: "i-academicons:google-scholar",
-      link: "https://scholar.google.com/citations?user=RuW6xgMAAAAJ"
-    },
-    {
       icon: "i-carbon:logo-x",
-      link: "https://www.twitter.com/renovamen_zxh"
+      link: "https://x.com/cynicil"
     },
     {
       icon: "i-ant-design:zhihu-outlined",
-      link: "https://www.zhihu.com/people/chao-neng-gui-su"
+      link: "https://www.zhihu.com/people/zhao-zhi-wen-58-15"
     },
     {
-      icon: "i-ic:twotone-catching-pokemon",
-      link: "https://portfolio.zxh.me",
-      name: "Portfolio"
+      icon: "i-ri:maimai-line",
+      link: "https://maimai.cn/profile/detail?dstu=231439153"
     },
     {
-      icon: "i-mingcute:dashboard-4-line",
-      link: "https://dashboard.zxh.me",
-      name: "Dashboard"
+      icon: "i-ri:bilibili-line",
+      link: "https://space.bilibili.com/35762084?spm_id_from=333.1007.0.0"
     }
   ]
 };
