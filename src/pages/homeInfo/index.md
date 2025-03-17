@@ -11,12 +11,14 @@ socials:
     link: "mailto:1427226264@qq.com"
   - icon: i-eva:github-outline
     link: https://github.com/Cnjszzw
-  - icon: i-radix-icons:linkedin-logo
-    link: https://www.linkedin.com/in/xiaohan-zou
   - icon: i-carbon:logo-x
     link: https://x.com/cynicil
   - icon: i-ant-design:zhihu-outlined
     link: https://www.zhihu.com/people/zhao-zhi-wen-58-15
+  - icon: i-ri-maimai-line  # 脉脉图标
+    link: https://maimai.cn/profile/detail?dstu=231439153  # 替换为实际链接
+  - icon: i-ri-bilibili-line  # B站图标
+    link: https://space.bilibili.com/35762084?spm_id_from=333.1007.0.0  # 替换为实际ID
 ---
 
 
