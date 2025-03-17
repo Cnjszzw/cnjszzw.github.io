@@ -28,32 +28,26 @@ socials:
 ---
 
 
-## Bio
+## 个人简介
 
-I am a Ph.D. student in the [Computer Science and Engineering](https://www.eecs.psu.edu/) department at [Pennsylvania State University](https://www.psu.edu/) advised by Prof. [George Kesidis](https://www.cse.psu.edu/~gik2/) and Prof. [Lu Lin](https://louise-lulin.github.io/). My current research focuses on trustworthiness and reliability in multimodal foundation models.
+嗨👋，我是赵志文，2025年1月硕士毕业于[西京学院](https://www.xijing.edu.cn/)电子信息（计算机技术方向），在[郝东来教授](https://jsjxy.xijing.edu.cn/info/1005/2094.htm)指导下专注于**目标检测**领域的算法研究。本科阶段就读于[山东师范大学](https://www.sdnu.edu.cn/)艺术学（广播电视编导），兼具艺术与计算机技术的**跨学科背景**。
 
-Previously, I received my master's degree in [Computer Science](https://www.bu.edu/cs/) from [Boston University](https://www.bu.edu/) and my bachelor's degree in [Software Engineering](http://sse.tongji.edu.cn/) from [Tongji University](https://www.tongji.edu.cn/). I also interned at Kuaishou.
+我的个人网站 **[INFO.CENTER](http://localhost:3000/#)** 是技术实践与知识管理的综合平台，包含：
+- **技术博客**：研究笔记与学习总结
+- **工具集合**：自研效率工具与技术方案
+- **文档中心**：项目文档与知识库  
+  欢迎访问交流！
 
-By the way, take a look at [some things](https://www.bu.edu/cs/) I've built as a web developer, featuring [ohmycv.app](https://ohmycv.
-app) - a sleek, in-browser, privacy-first Markdown resume builder.
+## 工作经历
+
+- [流金科技-后端开发实习生](https://www.bjljsy.com/)，2024年12月 - 2025年3月
+- [美团-测试开发实习生](https://baike.baidu.com/item/%E7%BE%8E%E5%9B%A2?fromModule=lemma_search-box)，2024年2月 - 2025年2月
+- [哔哩哔哩-测试开发实习生](https://baike.baidu.com/item/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9/8018053)，2023年9月 - 2024年2月
+- [丁香园-测试开发实习生](https://baike.baidu.com/item/%E4%B8%81%E9%A6%99%E5%9B%AD/1802629)，2023年4月 - 2023年8月
 
 
-## Talks
+## 杂项
 
-- [Meta / Few-shot Learning](https://www.bu.edu/cs/), Kuaishou, 08/2021
-- [Continual Learning: Meta Continual Learning & Task Free Settings](https://www.bu.edu/cs/), Peking University, 08/2020
-
-
-## Miscellaneous
-
-- 🚀 This [personal website](https://github.com/Renovamen/renovamen.github.io) is built with [Astro](https://astro.build/), [Solid](https://www.solidjs.com/) and [UnoCSS](https://github.com/antfu/unocss)
-
-- 🧐 _Renovamen_ is a Latin word means _renewal_
-
-- 🖥 Ex-OIer/ACMer
-
-- 🥎 Used to be a member of the softball team of Tongji University
-
-- 🌭 My dream: `while(sleeping){money++;}`
-
-- 🕹️ Currently interested in *No Man's Sky* and *Minecraft*
+- 🚀 该[个人网站](https://github.com/Cnjszzw/cnjszzw.github.io)基于[Docusaurus](https://docusaurus.io/)构建
+- 📺 追剧清单：[《新闻编辑室》](https://movie.douban.com/subject/6142597/)、  [《不够善良的我们》](https://movie.douban.com/subject/36151693/)
+- 🎮 游戏收藏：[《杀戮尖塔》](https://store.steampowered.com/app/646570/)、[《鬼泣4》](https://store.steampowered.com/app/646570/)  

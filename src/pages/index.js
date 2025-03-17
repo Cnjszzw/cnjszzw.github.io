@@ -5,11 +5,11 @@ import styles from '@site/src/css/home.module.css';
 
 // 直接从frontmatter中获取数据
 const info = {
-  name: "Zhiwen Zhao",
-  subname: "赵志文",
+  name: "赵志文",
+  subname: "Zhiwen Zhao",
   avatarFront: "/img/avatar_s.jpg",
   avatarBack: "/img/avatar_s.jpg",
-  tltr: "I do machine learning by day and build things for the web by night.",
+  tltr: "后端开发是主场，测试开发玩过票，前端开发顺手撸.",
   socials: [
     {
       icon: "i-academicons:cv",
@@ -57,14 +57,14 @@ export default function Home() {
 
   return (
     <Layout
-      title={`hi@${info.name.toLowerCase().split(' ')[0]}`}
+      title={`hi@${info.name}`}
       description={`${info.name}'s Personal Website`}>
       <main className={styles.container}>
         <div className={styles.header}>
           <div className={styles.intro}>
             <h1 className={styles.greeting}>
               你好，我是
-              <div className={styles.name}>{info.name} <span className={styles.subname}>({info.subname})</span>.</div>
+              <div className={styles.name}>{info.name} <span className={styles.subname}>({info.subname})</span></div>
             </h1>
             <p className={styles.tltr}>{info.tltr}</p>
             
@@ -94,14 +94,14 @@ export default function Home() {
             <h2>Bio</h2>
             <p>I am a Ph.D. student in the <a href="https://www.eecs.psu.edu/">Computer Science and Engineering</a> department at <a href="https://www.psu.edu/">Pennsylvania State University</a> advised by Prof. <a href="https://www.cse.psu.edu/~gik2/">George Kesidis</a> and Prof. <a href="https://louise-lulin.github.io/">Lu Lin</a>. My current research focuses on trustworthiness and reliability in multimodal foundation models.</p>
             <p>Previously, I received my master's degree in <a href="https://www.bu.edu/cs/">Computer Science</a> from <a href="https://www.bu.edu/">Boston University</a> and my bachelor's degree in <a href="http://sse.tongji.edu.cn/">Software Engineering</a> from <a href="https://www.tongji.edu.cn/">Tongji University</a>. I also interned at Kuaishou.</p>
-            <p>By the way, take a look at <a href="/projects">some things</a> I've built as a web developer, featuring <a href="https://ohmycv.app">ohmycv.app</a> - a sleek, in-browser, privacy-first Markdown resume builder.</p>
+            <p>By the way, take a look at <a href="https://www.bu.edu/cs/">some things</a> I've built as a web developer, featuring <a href="https://ohmycv.app">ohmycv.app</a> - a sleek, in-browser, privacy-first Markdown resume builder.</p>
           </section>
 
           <section className={styles.section}>
             <h2>Talks</h2>
             <ul className={styles.talks}>
-              <li><a href="#">Meta / Few-shot Learning</a>, Kuaishou, 08/2021</li>
-              <li><a href="#">Continual Learning: Meta Continual Learning & Task Free Settings</a>, Peking University, 08/2020</li>
+              <li><a href="https://www.bu.edu/cs/">Meta / Few-shot Learning</a>, Kuaishou, 08/2021</li>
+              <li><a href="https://www.bu.edu/cs/">Continual Learning: Meta Continual Learning & Task Free Settings</a>, Peking University, 08/2020</li>
             </ul>
           </section>
 
@@ -113,7 +113,7 @@ export default function Home() {
               <li>🖥 Ex-OIer/ACMer</li>
               <li>🥎 Used to be a member of the softball team of Tongji University</li>
               <li>🌭 My dream: <code>while(sleeping){'{'} money++; {'}'}</code></li>
-              <li>🎮 Currently interested in <i>No Man's Sky</i> and <i>Minecraft</i></li>
+              <li>🕹️ Currently interested in <i>No Man's Sky</i> and <i>Minecraft</i></li>
             </ul>
           </section>
         </div>
