@@ -14,15 +14,9 @@ socials:
   - icon: i-radix-icons:linkedin-logo
     link: https://www.linkedin.com/in/xiaohan-zou
   - icon: i-carbon:logo-x
-    link: https://www.twitter.com/renovamen_zxh
+    link: https://x.com/cynicil
   - icon: i-ant-design:zhihu-outlined
-    link: https://www.zhihu.com/people/chao-neng-gui-su
-  - icon: i-ic:twotone-catching-pokemon
-    link: https://portfolio.zxh.me
-    name: Portfolio
-  - icon: i-mingcute:dashboard-4-line
-    link: https://dashboard.zxh.me
-    name: Dashboard
+    link: https://www.zhihu.com/people/zhao-zhi-wen-58-15
 ---
 
 
