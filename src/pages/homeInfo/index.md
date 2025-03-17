@@ -1,16 +1,16 @@
 ---
-name: Xiaohan Zou
-subname: 邹笑寒
-avatarFront: /img/me.jpg
-avatarBack: /img/avatar.jpg
+name: Zhiwen Zhao
+subname: 赵志文
+avatarFront: /img/avatar_s.jpg
+avatarBack: /img/avatar_s.jpg
 tltr: I do machine learning by day and build things for the web by night.
 socials:
   - icon: i-academicons:cv
-    link: /files/cv/en.pdf
+    link: /files/25届-硕士-西京学院-计算机专业-赵志文.pdf
   - icon: "i-ion:mail-outline"
-    link: "mailto:renovamenzxh@gmail.com"
+    link: "mailto:1427226264@qq.com"
   - icon: i-eva:github-outline
-    link: https://github.com/Renovamen
+    link: https://github.com/Cnjszzw
   - icon: i-radix-icons:linkedin-logo
     link: https://www.linkedin.com/in/xiaohan-zou
   - icon: i-academicons:google-scholar
