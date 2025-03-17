@@ -3,7 +3,7 @@ name: 赵志文
 subname: Zhiwen Zhao
 avatarFront: /img/avatar_s.jpg
 avatarBack: /img/avatar_s.jpg
-tltr: 后端开发是主场，测试开发玩过票，前端开发顺手撸.
+tltr: 后端开发是主场，测试质量守门员，前端体验缝合怪.
 socials:
   - icon: "i-ion:mail-outline"
     link: "mailto:1427226264@qq.com"
