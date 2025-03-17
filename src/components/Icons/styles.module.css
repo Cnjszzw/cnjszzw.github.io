@@ -1,0 +1,27 @@
+.iconWrapper {
+  width: var(--icon-size, 24px);
+  height: var(--icon-size, 24px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.iconWrapper svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .iconWrapper {
+    width: var(--icon-size, 20px);
+    height: var(--icon-size, 20px);
+    transform: scale(0.9);
+  }
+  
+  .iconWrapper svg {
+    width: 100%;
+    height: 100%;
+  }
+}
