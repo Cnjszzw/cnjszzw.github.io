@@ -50,7 +50,6 @@
   flex-shrink: 0;
   position: relative;
   transform: rotate(5deg);
-  backface-visibility: hidden;
 }
 
 .avatar {
@@ -60,27 +59,11 @@
   position: absolute;
   top: 0;
   left: 0;
-  transition: opacity 0.3s ease;
   image-rendering: -webkit-optimize-contrast;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  backface-visibility: hidden;
-}
-
-.avatarFront {
-  opacity: 1;
-}
-
-.avatarBack {
-  opacity: 0;
-}
-
-.avatarContainer:hover .avatarFront {
-  opacity: 1;
-}
-
-.avatarContainer:hover .avatarBack {
-  opacity: 0;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .socials {
