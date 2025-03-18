@@ -148,6 +148,9 @@ main * {
   /* 当 sidebar 打开时，调整密码框位置 */
   :global(body[data-sidebar-opened="true"]) .authContainer {
     left: calc(50% + var(--doc-sidebar-width) / 2);
+    overflow: hidden;
+    background: var(--ifm-background-color);
+    z-index: 1000;
   }
 
   .charBox {
@@ -165,4 +168,4 @@ main * {
     left: -5px;
     background: transparent;
   }
-} 
+}
