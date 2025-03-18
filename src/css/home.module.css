@@ -62,8 +62,7 @@
   image-rendering: -webkit-optimize-contrast;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transform: translateZ(0);
-  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .socials {
