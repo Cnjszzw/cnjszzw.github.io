@@ -50,6 +50,8 @@
   flex-shrink: 0;
   position: relative;
   transform: rotate(5deg);
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .avatar {
@@ -60,13 +62,13 @@
   top: 0;
   left: 0;
   transition: opacity 0.3s ease;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
+  image-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
   transform: translateZ(0);
+  will-change: transform;
+  filter: blur(0);
 }
 
 .avatarFront {

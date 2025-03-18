@@ -190,11 +190,11 @@ const config = {
             label: 'OhMyCV',
             position: 'right',
           },
-          {
-            href: 'https://github.com/Cnjszzw',
-            label: 'GitHub',
-            position: 'right',
-          },
+          // {
+          //   href: 'https://github.com/Cnjszzw',
+          //   label: 'GitHub',
+          //   position: 'right',
+          // },
         ],
       },
       // footer: {
