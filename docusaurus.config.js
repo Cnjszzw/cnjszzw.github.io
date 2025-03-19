@@ -139,6 +139,13 @@ const config = {
         disableInDev: false,
       },
     ],
+    [
+      '@docusaurus/plugin-google-gtag',
+      {
+        trackingID: 'G-CCYCB23FSV',
+        anonymizeIP: false,
+      },
+    ],
   ],
 
 
