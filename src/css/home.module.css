@@ -62,7 +62,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  transition: opacity 0.3s ease;
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -98,15 +97,7 @@
 }
 
 .avatarBack {
-  opacity: 0;
-}
-
-.avatarContainer:hover .avatarFront {
-  opacity: 0;
-}
-
-.avatarContainer:hover .avatarBack {
-  opacity: 1;
+  display: none;
 }
 
 .socials {
