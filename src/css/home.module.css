@@ -9,7 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   gap: 2rem;
 }
 
@@ -18,29 +18,34 @@
 }
 
 .greeting {
-  font-size: 1.2rem;
-  font-weight: normal;
+  font-size: 1.1rem;
+  font-weight: 600;
   color: var(--ifm-color-emphasis-700);
   margin: 0;
+  letter-spacing: 0.05em;
 }
 
 .name {
   font-size: 2.5rem;
   font-weight: 600;
-  margin: 0.5rem 0;
+  margin: 0.8rem 0;
   color: var(--ifm-color-emphasis-900);
+  letter-spacing: 0.05em;
 }
 
 .subname {
-  font-weight: normal;
+  font-weight: 600;
   color: var(--ifm-color-emphasis-600);
   font-size: 1.5rem;
 }
 
 .tltr {
   font-size: 1.1rem;
+  font-weight: 600;
   color: var(--ifm-color-emphasis-700);
-  margin: 1rem 0;
+  margin: 0.8rem 0;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
 }
 
 .avatarContainer {
@@ -226,14 +231,42 @@
 }
 
 .section {
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .section h2 {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.section h2::after {
+  content: attr(data-en);
+  font-size: 1rem;
+  color: var(--ifm-color-emphasis-500);
+  font-weight: normal;
+}
+
+.section p {
+  margin-bottom: 1.5rem;
+  line-height: 2;
+  letter-spacing: 0.03em;
+}
+
+.miscList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.miscList li {
+  margin-bottom: 1.2rem;
+  line-height: 1.8;
+  letter-spacing: 0.03em;
 }
 
 .bioSection {
@@ -250,4 +283,41 @@
 
 .miscSection h2 {
   margin-top: 0.5rem;
+}
+
+.bioContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.education, .experience, .website {
+  padding-left: 1rem;
+  border-left: 2px solid var(--ifm-color-emphasis-200);
+}
+
+.education p, .experience p, .website p {
+  margin-bottom: 0;
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+}
+
+/* 移除不再使用的样式 */
+.eduItem,
+.companyList,
+.companyList li,
+.companyList li::before {
+  display: none;
+}
+
+.miscText {
+  margin: 0;
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+  color: var(--ifm-color-emphasis-800);
+}
+
+/* 移除不再使用的样式 */
+.miscList {
+  display: none;
 }
