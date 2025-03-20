@@ -20,7 +20,7 @@
 .greeting {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--ifm-color-emphasis-600);
   margin: 0;
   letter-spacing: 0.05em;
 }
@@ -36,21 +36,21 @@
 .subname {
   font-weight: 600;
   color: var(--ifm-color-emphasis-600);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .tltr {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--ifm-color-emphasis-600);
   margin: 0.8rem 0;
   letter-spacing: 0.05em;
   line-height: 1.8;
 }
 
 .avatarContainer {
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   border-radius: 8px;
   overflow: hidden;
   flex-shrink: 0;
@@ -213,8 +213,8 @@
   }
 
   .avatarContainer {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     margin-bottom: 1rem;
   }
 
@@ -248,7 +248,7 @@
   content: attr(data-en);
   font-size: 1rem;
   color: var(--ifm-color-emphasis-500);
-  font-weight: normal;
+  font-weight: 600;
 }
 
 .section p {
