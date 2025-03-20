@@ -146,6 +146,12 @@ const config = {
         anonymizeIP: false,
       },
     ],
+    [
+      '@docusaurus/plugin-google-tag-manager',
+      {
+        containerId: 'GTM-NQ553VVM',
+      },
+    ],
   ],
 
 
