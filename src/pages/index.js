@@ -114,11 +114,15 @@ export default function Home() {
 
           <section className={`${styles.section} ${styles.miscSection}`}>
             <h2 data-en="Miscellaneous">杂项</h2>
-            <p className={styles.miscText}>
-              📺追剧：<a href="https://movie.douban.com/subject/6142597/">新闻编辑室</a>、<a href="https://movie.douban.com/subject/36151693/">不够善良的我们</a> |
-              🎮游戏：<a href="https://store.steampowered.com/app/646570/">杀戮尖塔</a>、<a href="https://store.steampowered.com/app/329050">鬼泣4</a> |
-              ✨ INFP
-            </p>
+            <div className={styles.bioContent}>
+              <div className={styles.website}>
+                <p>
+                  📺 ：<a href="https://movie.douban.com/subject/6142597/">新闻编辑室</a>、<a href="https://movie.douban.com/subject/36151693/">不够善良的我们</a> |
+                  🎮 ：<a href="https://store.steampowered.com/app/646570/">杀戮尖塔</a>、<a href="https://store.steampowered.com/app/329050">鬼泣4</a> |
+                  ✨ INFP
+                </p>
+              </div>
+            </div>
           </section>
         </div>
       </main>
