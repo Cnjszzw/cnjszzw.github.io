@@ -1,6 +1,7 @@
 // 密码保护的路径列表
 export const protectedPaths = [
-  '/docs/interviewDoc'
+  '/docs/interviewDoc',
+  '/docs/articleDoc/companyDoc'
 ];
 
 // 生成密码的函数
