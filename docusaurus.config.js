@@ -93,6 +93,7 @@ const config = {
   //我自己加的
   markdown: {
     mermaid: true,
+    format: 'detect', // 自动检测文件类型：.md 用 CommonMark，.mdx 用 MDX
   },
 
   //我自己添加的
@@ -196,7 +197,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'articleDoc',
             position: 'left',
-            label: '文章',
+            label: '学习',
           },
           // 暂时屏蔽这个工具入口，这个在流金岁月公司写的，这个工具不具有适用性
           // {
