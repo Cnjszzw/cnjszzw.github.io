@@ -20,8 +20,8 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script>window.dataLayer=window.dataLayer||[]</script>
 <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-NQ553VVM",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script><link rel="stylesheet" href="/assets/css/styles.fc76cd85.css">
-<script src="/assets/js/runtime~main.ae5e916d.js" defer="defer"></script>
-<script src="/assets/js/main.3f948e29.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.af04a3d4.js" defer="defer"></script>
+<script src="/assets/js/main.2157e7b2.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script>
@@ -37,49 +37,20 @@
 <h1>三、为什么需要WebRTC</h1>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="31我们为何要建立-webrtc">3.1、我们为何要建立 WebRTC？<a href="#31我们为何要建立-webrtc" class="hash-link" aria-label="Direct link to 3.1、我们为何要建立 WebRTC？" title="Direct link to 3.1、我们为何要建立 WebRTC？">​</a></h2>
 <p>P2P是架构（常见的种子文件共享也是用的这个），UDP是传输层协议，类似TCP，而WebRTC接近于HTTP这种应用层协议的定位，本质上 是 P2P 模式的实时通信框架，依赖 UDP 和自定义协议，WebRTC 不是单一协议，而是<strong>协议集合</strong> （如 RTP/RTCP、DTLS、ICE 等）和<strong>API 标准</strong>。</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <table><thead><tr><th>概念</th><th>层级/类型</th><th>作用</th><th>关键特性</th></tr></thead><tbody><tr><td><strong>P2P</strong></td><td>网络架构</td><td>设备直接通信，减少中转延迟，适合实时场景（如直播、视频会议）。</td><td>去中心化、低延迟、直接传输，依赖 NAT 穿透技术（如 ICE、STUN/TURN）。</td></tr><tr><td><strong>UDP</strong></td><td>传输层协议</td><td>提供无连接、不可靠但低延迟的数据传输，适合实时音视频场景。</td><td>无握手、无重传、无拥塞控制，需应用层自行处理可靠性（如 WebRTC 封装）。</td></tr><tr><td><strong>WebRTC</strong></td><td>应用层框架</td><td>基于 UDP 的实时音视频通信标准，支持浏览器和设备间的 P2P 通信。</td><td>封装 UDP 实现加密（DTLS）、拥塞控制、NAT 穿透，提供标准化 API（如 <code>RTCPeerConnection</code>）。</td></tr></tbody></table>
 <p><strong>关键关系</strong></p>
 <ol>
-<li><strong>层级依赖</strong>：
+<li><strong>层级依赖</strong>：<!-- -->
 <ul>
 <li>WebRTC（应用层） → 封装 UDP（传输层） → 实现 P2P（网络架构）。</li>
 </ul>
 </li>
-<li><strong>协议协作</strong>：
+<li><strong>协议协作</strong>：<!-- -->
 <ul>
 <li>UDP 提供低延迟传输，WebRTC 补充可靠性与安全性，P2P 确保直接路径。</li>
 </ul>
 </li>
-<li><strong>适用场景</strong>：
+<li><strong>适用场景</strong>：<!-- -->
 <ul>
 <li>实时音视频（直播、会议）优先选择 <strong>P2P + UDP + WebRTC</strong> 组合。</li>
 </ul>
@@ -89,7 +60,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-互相介绍自己"><strong>1. 互相“介绍自己”</strong><a href="#1-互相介绍自己" class="hash-link" aria-label="Direct link to 1-互相介绍自己" title="Direct link to 1-互相介绍自己">​</a></h3>
 <ul>
-<li><strong>A 和 B 各自写一份“简历”（SDP）</strong>：
+<li><strong>A 和 B 各自写一份“简历”（SDP）</strong>：<!-- -->
 <ul>
 <li>我的联系方式（IP 地址、端口）</li>
 <li>我能发什么视频（支持的格式，比如高清/标清）</li>
@@ -100,7 +71,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-通过朋友交换简历"><strong>2. 通过“朋友”交换简历</strong><a href="#2-通过朋友交换简历" class="hash-link" aria-label="Direct link to 2-通过朋友交换简历" title="Direct link to 2-通过朋友交换简历">​</a></h3>
 <ul>
-<li><strong>找中间人传话</strong>：
+<li><strong>找中间人传话</strong>：<!-- -->
 <ul>
 <li>A 和 B 用微信、邮件、甚至喊一嗓子，把简历给对方。</li>
 <li><strong>注意</strong>：中间人只负责传简历，不参与后续通话！</li>
@@ -110,7 +81,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-找到最快的通话路径"><strong>3. 找到最快的通话路径</strong><a href="#3-找到最快的通话路径" class="hash-link" aria-label="Direct link to 3-找到最快的通话路径" title="Direct link to 3-找到最快的通话路径">​</a></h3>
 <ul>
-<li><strong>尝试所有可能的路</strong>：
+<li><strong>尝试所有可能的路</strong>：<!-- -->
 <ul>
 <li>直接打电话（P2P 直连）</li>
 <li>通过运营商转接（STUN 服务器穿透 NAT）</li>
@@ -160,10 +131,10 @@
 <li>
 <p><strong>路由器翻译</strong>：</p>
 <ul>
-<li>路由器收到请求，发现目标地址是外网（怎么发现的？是通过子网掩码的运算），立刻变身“翻译官”：
+<li>路由器收到请求，发现目标地址是外网（怎么发现的？是通过子网掩码的运算），立刻变身“翻译官”：<!-- -->
 <ul>
 <li>把 <strong>源地址</strong> 从 <code>10.0.0.2</code> 改成自己的公网 IP <code>5.5.5.5</code>，</li>
-<li>随机分配一个端口（比如 <code>3333</code>），并记下“小本本”：
+<li>随机分配一个端口（比如 <code>3333</code>），并记下“小本本”：<!-- -->
 <blockquote>
 <p><code>5.5.5.5:3333</code> → <code>10.0.0.2</code></p>
 </blockquote>
@@ -186,47 +157,17 @@
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-nat-的四种门卫模式"><strong>3. NAT 的四种“门卫模式”</strong><a href="#3-nat-的四种门卫模式" class="hash-link" aria-label="Direct link to 3-nat-的四种门卫模式" title="Direct link to 3-nat-的四种门卫模式">​</a></h3>
 <p>路由器的“严格程度”不同，影响外网能否主动找到你：</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <table><thead><tr><th><strong>模式</strong></th><th><strong>规则</strong></th><th><strong>类比</strong></th></tr></thead><tbody><tr><td><strong>完全开放型</strong></td><td>任何外网设备发到 <code>5.5.5.5:3333</code> 的数据，都转给 <code>10.0.0.2</code>。</td><td>小区门卫：只要快递寄到你家地址，不管是谁寄的，直接放行。</td></tr><tr><td><strong>半开放型</strong></td><td>只转给之前联系过的 IP（比如 <code>4.4.4.4</code>），其他 IP 的快递拒收。</td><td>门卫：只收你之前买过东西的商家快递。</td></tr><tr><td><strong>较严格型</strong></td><td>只收特定 IP + 端口的快递（比如 <code>4.4.4.4:80</code>），其他全拒。</td><td>门卫：必须是某商家的某个分店寄的快递才收。</td></tr><tr><td><strong>最严格型（对称NAT）</strong></td><td>快递必须是 <strong>同一商家、同一分店、同一快递员</strong> 寄的，否则拒收。</td><td>门卫：连快递员换了个工牌都不行，直接扔掉！</td></tr></tbody></table>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="4-webrtc-如何突破-nat"><strong>4. WebRTC 如何突破 NAT？</strong><a href="#4-webrtc-如何突破-nat" class="hash-link" aria-label="Direct link to 4-webrtc-如何突破-nat" title="Direct link to 4-webrtc-如何突破-nat">​</a></h3>
 <ul>
 <li><strong>问题</strong>：WebRTC 需要两台内网设备直接通话（比如视频聊天），但 NAT 挡在中间。</li>
-<li><strong>解决工具</strong>：
+<li><strong>解决工具</strong>：<!-- -->
 <ul>
 <li><strong>STUN 服务器</strong>：像“侦察兵”，帮你找到自己的公网 IP 和端口。</li>
 <li><strong>TURN 服务器</strong>：如果 NAT 太严格（比如对称型），直接通过它中转数据（备用方案）。</li>
 </ul>
 </li>
-<li><strong>关键结论</strong>：
+<li><strong>关键结论</strong>：<!-- -->
 <ul>
 <li>前三种 NAT 可通过 STUN 穿透，WebRTC 正常工作。</li>
 <li>对称 NAT 必须依赖 TURN 服务器（性能差，成本高）。</li>
@@ -257,7 +198,7 @@
 <p><strong>路由器翻译</strong>：</p>
 <ul>
 <li>路由器把请求的源地址 <code>10.0.0.2</code> 改成自己的公网 IP <code>5.5.5.5</code>，</li>
-<li>随机分配端口 <code>3333</code>，并记下“小本本”：
+<li>随机分配端口 <code>3333</code>，并记下“小本本”：<!-- -->
 <blockquote>
 <p><code>5.5.5.5:3333</code> → <code>10.0.0.2</code></p>
 </blockquote>
@@ -281,36 +222,6 @@
 </li>
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-stun-的超能力与死穴"><strong>3. STUN 的“超能力”与“死穴”</strong><a href="#3-stun-的超能力与死穴" class="hash-link" aria-label="Direct link to 3-stun-的超能力与死穴" title="Direct link to 3-stun-的超能力与死穴">​</a></h3>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <table><thead><tr><th><strong>NAT 类型</strong></th><th><strong>STUN 能否穿透？</strong></th><th><strong>为什么？</strong></th></tr></thead><tbody><tr><td><strong>完全开放型</strong></td><td>✅ 轻松穿透</td><td>外网设备直接通过 <code>5.5.5.5:3333</code> 找到你，无需任何条件。</td></tr><tr><td><strong>半开放型</strong></td><td>✅ 需要“预热”</td><td>第一次连接会失败，需先通过服务器交换信息，让路由器记录对方的 IP。</td></tr><tr><td><strong>较严格型</strong></td><td>✅ 需要“精准预热”</td><td>不仅要记录对方的 IP，还要固定端口（比如 <code>4.4.4.4:80</code>）。</td></tr><tr><td><strong>对称 NAT</strong></td><td>❌ 完全无效</td><td>路由器每次连接都分配新端口，STUN 给的“形象”会失效，必须用 TURN 中转。</td></tr></tbody></table>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="4-一句话总结-stun-的用途"><strong>4. 一句话总结 STUN 的用途</strong><a href="#4-一句话总结-stun-的用途" class="hash-link" aria-label="Direct link to 4-一句话总结-stun-的用途" title="Direct link to 4-一句话总结-stun-的用途">​</a></h3>
 <p><strong>STUN = 快速低成本的“破隐符”</strong></p>
@@ -358,7 +269,7 @@
 <p><strong>信令 = 快递员</strong></p>
 <ul>
 <li><strong>作用</strong>：帮你传递“怎么连接”的说明书（SDP）和“可能的地址”（ICE 候选）。</li>
-<li><strong>三步任务</strong>：
+<li><strong>三步任务</strong>：<!-- -->
 <ol>
 <li>送出发起连接的请求（比如“我要视频通话”）。</li>
 <li>交换双方的“收件地址”（公网 IP + 端口）。</li>
@@ -387,7 +298,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="5-sdp-请求与答复"><strong>5. SDP 请求与答复</strong><a href="#5-sdp-请求与答复" class="hash-link" aria-label="Direct link to 5-sdp-请求与答复" title="Direct link to 5-sdp-请求与答复">​</a></h3>
 <ul>
-<li><strong>流程</strong>：
+<li><strong>流程</strong>：<!-- -->
 <ol>
 <li><strong>你</strong>：生成一份“连接说明书”（SDP Offer），通过快递员发给对方。</li>
 <li><strong>对方</strong>：收到后回复“我同意”或“我拒绝”（SDP Answer）。</li>
@@ -419,7 +330,7 @@
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-p2p-通信的高效性"><strong>1. P2P 通信的高效性</strong><a href="#1-p2p-通信的高效性" class="hash-link" aria-label="Direct link to 1-p2p-通信的高效性" title="Direct link to 1-p2p-通信的高效性">​</a></h3>
 <ul>
 <li><strong>低延迟</strong>：数据直接通过最优路径传输，无需经过第三方服务器。</li>
-<li><strong>高性能</strong>：
+<li><strong>高性能</strong>：<!-- -->
 <ul>
 <li>使用 <strong>UDP 协议</strong>，适合实时音视频（如视频会议、直播）。</li>
 <li>数据加密后直接传输，路由器仅负责转发，不解析内容。</li>
@@ -435,7 +346,7 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="72-缺点"><strong>7.2 缺点</strong><a href="#72-缺点" class="hash-link" aria-label="Direct link to 72-缺点" title="Direct link to 72-缺点">​</a></h2>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-依赖-stunturn-服务器"><strong>1. 依赖 STUN/TURN 服务器</strong><a href="#1-依赖-stunturn-服务器" class="hash-link" aria-label="Direct link to 1-依赖-stunturn-服务器" title="Direct link to 1-依赖-stunturn-服务器">​</a></h3>
 <ul>
-<li><strong>成本问题</strong>：
+<li><strong>成本问题</strong>：<!-- -->
 <ul>
 <li><strong>STUN</strong>：轻量级，但仅解决部分 NAT 穿透问题。</li>
 <li><strong>TURN</strong>：需维护高性能服务器（带宽、公网 IP），成本高昂。</li>
@@ -445,13 +356,13 @@
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-多人场景扩展性差"><strong>2. 多人场景扩展性差</strong><a href="#2-多人场景扩展性差" class="hash-link" aria-label="Direct link to 2-多人场景扩展性差" title="Direct link to 2-多人场景扩展性差">​</a></h3>
 <ul>
-<li><strong>连接数爆炸</strong>：
+<li><strong>连接数爆炸</strong>：<!-- -->
 <ul>
 <li>例如 100 个用户需建立 <strong>4950 条 P2P 连接</strong>（组合公式：<code>n(n-1)/2</code>）。</li>
 <li>网络负载和带宽消耗随用户数激增。</li>
 </ul>
 </li>
-<li><strong>适用场景限制</strong>：
+<li><strong>适用场景限制</strong>：<!-- -->
 <ul>
 <li>适合 <strong>1对1 或小规模通信</strong>（如视频通话）。</li>
 <li>大规模场景（如百人会议、游戏）需改用 <strong>集中式服务器</strong> 中转。</li>
@@ -467,59 +378,14 @@
 <h1>八、WebSocket 与 WebRTC 的区别</h1>
 <hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="1-核心目标不同"><strong>1. 核心目标不同</strong><a href="#1-核心目标不同" class="hash-link" aria-label="Direct link to 1-核心目标不同" title="Direct link to 1-核心目标不同">​</a></h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <table><thead><tr><th><strong>技术</strong></th><th><strong>设计目的</strong></th><th><strong>典型场景</strong></th></tr></thead><tbody><tr><td><strong>WebSocket</strong></td><td>实现实时双向通信（如聊天、实时通知）。</td><td>聊天应用、股票行情推送。</td></tr><tr><td><strong>WebRTC</strong></td><td>低延迟音视频传输（如视频通话、直播）。</td><td>视频会议、在线教育、游戏。</td></tr></tbody></table>
 <hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="2-技术差异"><strong>2. 技术差异</strong><a href="#2-技术差异" class="hash-link" aria-label="Direct link to 2-技术差异" title="Direct link to 2-技术差异">​</a></h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <table><thead><tr><th><strong>维度</strong></th><th><strong>WebSocket</strong></th><th><strong>WebRTC</strong></th></tr></thead><tbody><tr><td><strong>协议</strong></td><td>基于 <strong>TCP</strong>（可靠传输）。</td><td>基于 <strong>UDP</strong>（低延迟优先）。</td></tr><tr><td><strong>延迟</strong></td><td>较高（受 TCP 握手和重传影响）。</td><td>极低（优化实时性，容忍丢包）。</td></tr><tr><td><strong>传输内容</strong></td><td>文本、二进制数据。</td><td>音视频流（内置编解码优化）。</td></tr></tbody></table>
 <hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="3-依赖关系"><strong>3. 依赖关系</strong><a href="#3-依赖关系" class="hash-link" aria-label="Direct link to 3-依赖关系" title="Direct link to 3-依赖关系">​</a></h2>
 <ul>
-<li><strong>WebRTC 依赖 WebSocket</strong>：
+<li><strong>WebRTC 依赖 WebSocket</strong>：<!-- -->
 <ul>
 <li>用于初始信令交换（传递 SDP 和 ICE 信息）。</li>
 <li>连接建立后，音视频数据直接通过 P2P 传输，不再需要 WebSocket。</li>
