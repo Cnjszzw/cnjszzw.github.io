@@ -93,7 +93,6 @@ const config = {
   //我自己加的
   markdown: {
     mermaid: true,
-    format: 'detect', // 自动检测文件类型：.md 用 CommonMark，.mdx 用 MDX
   },
 
   //我自己添加的
