@@ -196,7 +196,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'articleDoc',
             position: 'left',
-            label: '文章',
+            label: '学习',
           },
           // 暂时屏蔽这个工具入口，这个在流金岁月公司写的，这个工具不具有适用性
           // {
