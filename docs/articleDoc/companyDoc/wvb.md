@@ -30,8 +30,8 @@ wvp-redis
 wvp-server
 
 zftp-server
-zlm-server
-assist-server(直播？)
+zlm-server(媒体服务器)
+assist-server(文件服务器)
 ```
 
 目前这个项目，有三个端，后端、web前端、安卓客户端，分别对应以下三个git项目

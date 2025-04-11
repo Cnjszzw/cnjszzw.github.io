@@ -32,3 +32,42 @@ yarn dev
 3380
 ```
 
+**环境切换**
+
+`.env.development`文件,通过切换`VUE_APP_API_URL1`来切换环境，其中`172.168.5.247:8972`前一个为ip，后一个为端口，注意自能填写ipv4地址，不可以填写`localhost`或者`127.0.0.1`
+
+注意：对于后端，`8970`是`https`的端口，而`8972`是`http`的端口
+
+```
+# 只在开发模式中被载入
+
+# 网站前缀
+BASE_URL = /
+
+# API
+#VUE_APP_API_URL1 = http://29135jo738.zicp.vip/api/v1
+# VUE_APP_API_URL1 = https://10.60.100.196:18080
+//VUE_APP_API_URL1 = http://10.30.2.13:8972
+//VUE_APP_API_URL1 = http://10.30.2.8:8972
+VUE_APP_API_URL1 = http://172.168.5.247:8972
+//VUE_APP_API_URL2 = https://10.60.100.190:8443/
+VUE_APP_UI_VERSION = WVPUI_V1.0_20210408
+VUE_APP_JITSI_URL = https://10.60.100.190:8443
+VUE_APP_WEBSOCKET_URL = 127.0.0.1:18080
+```
+
+## 二、报错
+
+如果提示`liences`的报错，可以修改`src/views/shared/login/index.vue`这个文件，注释掉这行代码`lisence()`：
+
+```ts
+    const ontipcancel =  () => {
+      tipmodel.value = false
+      getsetipdlg(true)
+    }
+    //lisence()
+    const getsetipdlg = (blag) => {
+      isModalVisible.value = true;
+    }
+```
+
