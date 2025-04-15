@@ -19,3 +19,5 @@ toc_max_heading_level: 5
 ```
 
 ![image-20250415224823170](./assets/image-20250415224823170.png)
+
+注意：toc_min_heading_level最低为2
