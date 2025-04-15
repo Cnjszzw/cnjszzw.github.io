@@ -1,6 +1,9 @@
 ---
 title: vue3学习笔记
 description: 来源 - 尚硅谷-禹神
+# 显示 h2 到 h5 标题
+toc_min_heading_level: 1
+toc_max_heading_level: 3
 ---
 
 #  一、vue3项目结构
