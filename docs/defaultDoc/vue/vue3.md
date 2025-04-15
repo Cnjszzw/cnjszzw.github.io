@@ -633,6 +633,8 @@ function changeCar() {
 
 ## 3.9.【watch】
 
+> 这里有五种情况，第一种和第四种用的比较多
+
 - 作用：监视数据的变化（和`Vue2`中的`watch`作用一致）
 - 特点：`Vue3`中的`watch`只能监视以下**四种数据**：
 
@@ -904,7 +906,400 @@ function changeCar() {
 </script>
 ```
 
+## 3.10. 【watchEffect】
 
+* 官网：立即运行一个函数，同时响应式地追踪其依赖，并在依赖更改时重新执行该函数。
+
+* `watch`对比`watchEffect`
+
+  > 1. 都能监听响应式数据的变化，不同的是监听数据变化的方式不同
+  >
+  > 2. `watch`：要明确指出监视的数据
+  >
+  > 3. `watchEffect`：不用明确指出监视的数据（函数中用到哪些属性，那就监视哪些属性）。
+
+* 示例代码：
+
+  ```vue
+  <template>
+    <div class="person">
+      <h1>需求：水温达到50℃，或水位达到20cm，则联系服务器</h1>
+      <h2 id="demo">水温：{{temp}}</h2>
+      <h2>水位：{{height}}</h2>
+      <button @click="changePrice">水温+1</button>
+      <button @click="changeSum">水位+10</button>
+    </div>
+  </template>
+  
+  <script lang="ts" setup name="Person">
+    import {ref,watch,watchEffect} from 'vue'
+    // 数据
+    let temp = ref(0)
+    let height = ref(0)
+  
+    // 方法
+    function changePrice(){
+      temp.value += 10
+    }
+    function changeSum(){
+      height.value += 1
+    }
+  
+    // 用watch实现，需要明确的指出要监视：temp、height
+    watch([temp,height],(value)=>{
+      // 从value中获取最新的temp值、height值
+      const [newTemp,newHeight] = value
+      // 室温达到50℃，或水位达到20cm，立刻联系服务器
+      if(newTemp >= 50 || newHeight >= 20){
+        console.log('联系服务器')
+      }
+    })
+  
+    // 用watchEffect实现，不用
+    const stopWtach = watchEffect(()=>{
+      // 室温达到50℃，或水位达到20cm，立刻联系服务器
+      if(temp.value >= 50 || height.value >= 20){
+        console.log(document.getElementById('demo')?.innerText)
+        console.log('联系服务器')
+      }
+      // 水温达到100，或水位达到50，取消监视
+      if(temp.value === 100 || height.value === 50){
+        console.log('清理了')
+        stopWtach()
+      }
+    })
+  </script>
+  ```
+
+## 3.11 【标签的 ref 属性】
+
+  作用：用于注册模板引用。
+
+  > * 用在普通`DOM`标签上，获取的是`DOM`节点。
+  >
+  > * 用在组件标签上，获取的是组件实例对象。
+
+  用在普通`DOM`标签上：
+
+  ```vue
+  <template>
+    <div class="person">
+      <h1 ref="title1">尚硅谷</h1>
+      <h2 ref="title2">前端</h2>
+      <h3 ref="title3">Vue</h3>
+      <input type="text" ref="inpt"> <br><br>
+      <button @click="showLog">点我打印内容</button>
+    </div>
+  </template>
+  
+  <script lang="ts" setup name="Person">
+    import {ref} from 'vue'
+  	
+    let title1 = ref()
+    let title2 = ref()
+    let title3 = ref()
+  
+    function showLog(){
+      // 通过id获取元素
+      const t1 = document.getElementById('title1')
+      // 打印内容
+      console.log((t1 as HTMLElement).innerText)
+      console.log((<HTMLElement>t1).innerText)
+      console.log(t1?.innerText)
+      
+  		/************************************/
+  		
+      // 通过ref获取元素
+      console.log(title1.value)
+      console.log(title2.value)
+      console.log(title3.value)
+    }
+  </script>
+  ```
+
+  用在组件标签上：
+
+  ```vue
+  <!-- 父组件App.vue -->
+  <template>
+    <Person ref="ren"/>
+    <button @click="test">测试</button>
+  </template>
+  
+  <script lang="ts" setup name="App">
+    import Person from './components/Person.vue'
+    import {ref} from 'vue'
+  
+    let ren = ref()
+  
+    function test(){
+      console.log(ren.value.name)
+      console.log(ren.value.age)
+    }
+  </script>
+  
+  
+  <!-- 子组件Person.vue中要使用defineExpose暴露内容 -->
+  <script lang="ts" setup name="Person">
+    import {ref,defineExpose} from 'vue'
+  	// 数据
+    let name = ref('张三')
+    let age = ref(18)
+    /****************************/
+    /****************************/
+    // 使用defineExpose将组件中的数据交给外部
+    defineExpose({name,age})
+  </script>
+  ```
+
+  **总结**
+
+  就是给html分配唯一id不要用`class="title1"`这种，否则会冲突，最好用`ref="title"`，这样可以解决冲突的问题，不同的vue文件中可以有相同热`ref`，有点局部变量的意思
+
+## 3.12. 【props】
+
+>  这个本质是组件用来接收外部变量的
+
+  > ```js
+  > // 定义一个接口，限制每个Person对象的格式
+  > export interface PersonInter {
+  > id:string,
+  > name:string,
+  >  age:number
+  > }
+  > 
+  > // 定义一个自定义类型Persons
+  > export type Persons = Array<PersonInter>
+  > ```
+  >
+  > `App.vue`中代码：
+  >
+  > ```vue
+  > <template>
+  > 	<Person :list="persons"/>
+  > </template>
+  > 
+  > <script lang="ts" setup name="App">
+  > import Person from './components/Person.vue'
+  > import {reactive} from 'vue'
+  >  import {type Persons} from './types'
+  > 
+  >  let persons = reactive<Persons>([
+  >   {id:'e98219e12',name:'张三',age:18},
+  >    {id:'e98219e13',name:'李四',age:19},
+  >     {id:'e98219e14',name:'王五',age:20}
+  >   ])
+  > </script>
+  > 
+  > ```
+  >
+  > `Person.vue`中代码：
+  >
+  > ```Vue
+  > <template>
+  > <div class="person">
+  > <ul>
+  >   <li v-for="item in list" :key="item.id">
+  >      {{item.name}}--{{item.age}}
+  >    </li>
+  >  </ul>
+  > </div>
+  > </template>
+  > 
+  > <script lang="ts" setup name="Person">
+  > import {defineProps} from 'vue'
+  > import {type PersonInter} from '@/types'
+  > 
+  > // 第一种写法：仅接收
+  > // const props = defineProps(['list'])
+  > 
+  > // 第二种写法：接收+限制类型
+  > // defineProps<{list:Persons}>()
+  > 
+  > // 第三种写法：接收+限制类型+指定默认值+限制必要性
+  > let props = withDefaults(defineProps<{list?:Persons}>(),{
+  >   list:()=>[{id:'asdasg01',name:'小猪佩奇',age:18}]
+  > })
+  > console.log(props)
+  > </script>
+  > ```
+
+## 3.13. 【生命周期】
+
+* 概念：`Vue`组件实例在创建时要经历一系列的初始化步骤，在此过程中`Vue`会在合适的时机，调用特定的函数，从而让开发者有机会在特定阶段运行自己的代码，这些特定的函数统称为：生命周期钩子
+
+* 规律：
+
+  > 生命周期整体分为四个阶段，分别是：**创建、挂载、更新、销毁**，每个阶段都有两个钩子，一前一后。
+
+* `Vue2`的生命周期
+
+  > 创建阶段：`beforeCreate`、`created`
+  >
+  > 挂载阶段：`beforeMount`、`mounted`
+  >
+  > 更新阶段：`beforeUpdate`、`updated`
+  >
+  > 销毁阶段：`beforeDestroy`、`destroyed`
+
+* `Vue3`的生命周期
+
+  > 创建阶段：`setup`
+  >
+  > 挂载阶段：`onBeforeMount`、`onMounted`
+  >
+  > 更新阶段：`onBeforeUpdate`、`onUpdated`
+  >
+  > 卸载阶段：`onBeforeUnmount`、`onUnmounted`
+
+* 常用的钩子：`onMounted`(挂载完毕)、`onUpdated`(更新完毕)、`onBeforeUnmount`(卸载之前)
+
+* 示例代码：
+
+  ```vue
+  <template>
+    <div class="person">
+      <h2>当前求和为：{{ sum }}</h2>
+      <button @click="changeSum">点我sum+1</button>
+    </div>
+  </template>
+  
+  <!-- vue3写法 -->
+  <script lang="ts" setup name="Person">
+    import { 
+      ref, 
+      onBeforeMount, 
+      onMounted, 
+      onBeforeUpdate, 
+      onUpdated, 
+      onBeforeUnmount, 
+      onUnmounted 
+    } from 'vue'
+  
+    // 数据
+    let sum = ref(0)
+    // 方法
+    function changeSum() {
+      sum.value += 1
+    }
+    console.log('setup')
+    // 生命周期钩子
+    onBeforeMount(()=>{
+      console.log('挂载之前')
+    })
+    onMounted(()=>{
+      console.log('挂载完毕')
+    })
+    onBeforeUpdate(()=>{
+      console.log('更新之前')
+    })
+    onUpdated(()=>{
+      console.log('更新完毕')
+    })
+    onBeforeUnmount(()=>{
+      console.log('卸载之前')
+    })
+    onUnmounted(()=>{
+      console.log('卸载完毕')
+    })
+  </script>
+  ```
+
+## 3.14. 【自定义hook】
+
+- 什么是`hook`？—— 本质是一个函数，把`setup`函数中使用的`Composition API`进行了封装，类似于`vue2.x`中的`mixin`。
+
+- 自定义`hook`的优势：复用代码, 让`setup`中的逻辑更清楚易懂。
+
+示例代码：
+
+- `useSum.ts`中内容如下：
+
+  ```js
+  import {ref,onMounted} from 'vue'
+  
+  export default function(){
+    let sum = ref(0)
+  
+    const increment = ()=>{
+      sum.value += 1
+    }
+    const decrement = ()=>{
+      sum.value -= 1
+    }
+    onMounted(()=>{
+      increment()
+    })
+  
+    //向外部暴露数据
+    return {sum,increment,decrement}
+  }		
+  ```
+
+- `useDog.ts`中内容如下：
+
+  ```js
+  import {reactive,onMounted} from 'vue'
+  import axios,{AxiosError} from 'axios'
+  
+  export default function(){
+    let dogList = reactive<string[]>([])
+  
+    // 方法
+    async function getDog(){
+      try {
+        // 发请求
+        let {data} = await axios.get('https://dog.ceo/api/breed/pembroke/images/random')
+        // 维护数据
+        dogList.push(data.message)
+      } catch (error) {
+        // 处理错误
+        const err = <AxiosError>error
+        console.log(err.message)
+      }
+    }
+  
+    // 挂载钩子
+    onMounted(()=>{
+      getDog()
+    })
+  	
+    //向外部暴露数据
+    return {dogList,getDog}
+  }
+  ```
+
+- 组件中具体使用：
+
+  ```vue
+  <template>
+    <h2>当前求和为：{{sum}}</h2>
+    <button @click="increment">点我+1</button>
+    <button @click="decrement">点我-1</button>
+    <hr>
+    <img v-for="(u,index) in dogList.urlList" :key="index" :src="(u as string)"> 
+    <span v-show="dogList.isLoading">加载中......</span><br>
+    <button @click="getDog">再来一只狗</button>
+  </template>
+  
+  <script lang="ts">
+    import {defineComponent} from 'vue'
+  
+    export default defineComponent({
+      name:'App',
+    })
+  </script>
+  
+  <script setup lang="ts">
+    import useSum from './hooks/useSum'
+    import useDog from './hooks/useDog'
+  	
+    let {sum,increment,decrement} = useSum()
+    let {dogList,getDog} = useDog()
+  </script>
+  ```
+
+    
 
 
 
@@ -1008,20 +1403,24 @@ const count = ref(0);
 count.value = 10; // 视图自动更新
 ```
 
+## 4.wantch/watchEffect如何停止？
 
+以下代码是一个watch代码，在 Vue3 中，无论是 `watch` 还是 `watchEffect`，它们都会返回一个 **停止函数（stop function）** ，调用这个函数即可主动停止监听，平常用不大停止函数，就不需要定义一个变量接受停止函数：`const stopWtach =`
 
-
-
-
-
-# TODO
-
-## 1.js箭头函数的特点了解下
-
-```jsx
-setup(){
-  return ()=> '你好啊！'
-}
+```ts
+// 用watchEffect实现，不用
+  const stopWtach = watchEffect(()=>{
+    // 室温达到50℃，或水位达到20cm，立刻联系服务器
+    if(temp.value >= 50 || height.value >= 20){
+      console.log(document.getElementById('demo')?.innerText)
+      console.log('联系服务器')
+    }
+    // 水温达到100，或水位达到50，取消监视
+    if(temp.value === 100 || height.value === 50){
+      console.log('清理了')
+      stopWtach()
+    }
+  })
 ```
 
 
@@ -1031,6 +1430,14 @@ setup(){
 
 
 
+
+
+
+
+
+# TODO
+
+## 1.js箭头函数的特点了解下
 
 
 
