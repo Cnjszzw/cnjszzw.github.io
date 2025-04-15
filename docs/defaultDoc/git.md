@@ -1,6 +1,12 @@
 # Git配置报错
 
-## 1. unable to access 'https://github.com/Cnjszzw/cnjszzw.github.io.git/': Recv failure: Connection was reset
+## 1. Recv failure: Connection was reset
+
+报错如下：
+
+```shell
+unable to access 'https://github.com/Cnjszzw/cnjszzw.github.io.git/': Recv failure: Connection was reset
+```
 
 一般是没有设置代理，用一下命令配置下就好了
 

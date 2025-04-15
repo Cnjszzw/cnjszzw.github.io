@@ -1,6 +1,6 @@
 ---
-Title : vue3学习笔记
-Source: 尚硅谷-禹神
+title: vue3学习笔记
+description: 来源 - 尚硅谷-禹神
 ---
 
 #  一、vue3项目结构
