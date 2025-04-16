@@ -63,8 +63,8 @@ const config = {
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/Cnjszzw/cnjszzw.github.io/tree/master/',
+          // editUrl:
+          //   'https://github.com/Cnjszzw/cnjszzw.github.io/tree/master/',
         },
         blog: {
           blogSidebarTitle: '河流的入海口，在文字里改道', // 修改标题
@@ -76,8 +76,8 @@ const config = {
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/Cnjszzw/cnjszzw.github.io/tree/master/',
+          // editUrl:
+          //   'https://github.com/Cnjszzw/cnjszzw.github.io/tree/master/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
