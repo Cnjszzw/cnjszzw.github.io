@@ -21,6 +21,10 @@ D:\sw\wvp-windows\wvp\config\application.yml
 D:\sw\wvp-windows\zlm\config.ini
 ```
 
+```
+D:\web-video-platform\wvplicense  //记得保存这个重装
+```
+
 **如何重启wvp**
 
 ```
@@ -108,3 +112,6 @@ GIS页面就是播放的按钮，视频调度这里其实就是相当于音频/�
 不太清楚怎么造数据，这个可能得看一下
 
 ### 五、网源类型
+
+
+
