@@ -18,7 +18,11 @@ my-vue3-project/
 ├── src/							 # 源代码文件
 │   ├── assets/        # 静态资源（图片、字体等，会经过构建处理）
 │   │   └── logo.png
-│   ├── components/    # 公共组件（可复用的 UI 组件）
+│   ├── router/        # 路由器
+│   │   └── index.ts
+│   ├── views(或pages) # 路由组件
+│   │   └── view.vue
+│   ├── components/    # 一般组件（可复用的 UI 组件）
 │   │   └── Example.vue
 │   ├── App.vue        # 根组件
 │   └── main.js        # 入口文件（初始化 Vue 应用）
@@ -72,7 +76,7 @@ createApp(App).mount('#app')
 
  **src中main.js和app.vue必不可少**  
 
-## 4.App.vue
+## 4.`App.vue`
 
 一个vue文件中，最基本就三个标签：`<template>` `<script>` `<style>`
 
@@ -115,6 +119,64 @@ export default {
 }
 </style>
 ```
+
+## 5.`router/index.js`
+
+```ts
+// 创建一个路由器，并暴露出去
+
+// 第一步：引入createRouter
+import {createRouter,createWebHistory} from 'vue-router'
+// 引入一个一个可能要呈现组件
+import Home from '@/components/Home.vue'
+import News from '@/components/News.vue'
+import About from '@/components/About.vue'
+
+// 第二步：创建路由器
+const router = createRouter({
+  history:createWebHistory(), //路由器的工作模式（稍后讲解）
+  routes:[ //一个一个的路由规则
+    {
+      path:'/home',
+      component:Home
+    },
+    {
+      path:'/news',
+      component:News
+    },
+    {
+      path:'/about',
+      component:About
+    },
+  ]
+})
+
+// 暴露出去router
+export default router
+
+```
+
+同时修改`App.vue`
+
+```ts
+// 引入createApp用于创建应用
+import {createApp} from 'vue'
+// 引入App根组件
+import App from './App.vue'
+// 引入路由器
+import router from './router'
+
+// 创建一个应用
+const app = createApp(App)
+// 使用路由器
+app.use(router)
+// 挂载整个应用到app容器中
+app.mount('#app')
+```
+
+
+
+
 
 # 二、创建项目/一个例子
 
@@ -1302,7 +1364,363 @@ function changeCar() {
   </script>
   ```
 
-    
+# 四、 路由
+
+## 4.1. 【对路由的理解】
+
+![image-20250417204237684](./assets/image-20250417204237684.png)
+
+## 4.2. 【基本切换效果】
+
+- `Vue3`中要使用`vue-router`的最新版本，目前是`4`版本。
+
+- 路由配置文件代码如下：
+
+  ```js
+  import {createRouter,createWebHistory} from 'vue-router'
+  import Home from '@/pages/Home.vue'
+  import News from '@/pages/News.vue'
+  import About from '@/pages/About.vue'
+  
+  const router = createRouter({
+  	history:createWebHistory(),
+  	routes:[
+  		{
+  			path:'/home',
+  			component:Home
+  		},
+  		{
+  			path:'/about',
+  			component:About
+  		}
+  	]
+  })
+  export default router
+  ```
+
+* `main.ts`代码如下：
+
+  ```js
+  import router from './router/index'
+  app.use(router)
+  
+  app.mount('#app')
+  ```
+
+- `App.vue`代码如下
+
+  ```vue
+  <template>
+    <div class="app">
+      <h2 class="title">Vue路由测试</h2>
+      <!-- 导航区 -->
+      <div class="navigate">
+        <RouterLink to="/home" active-class="active">首页</RouterLink>
+        <RouterLink to="/news" active-class="active">新闻</RouterLink>
+        <RouterLink to="/about" active-class="active">关于</RouterLink>
+      </div>
+      <!-- 展示区 -->
+      <div class="main-content">
+        <RouterView></RouterView>
+      </div>
+    </div>
+  </template>
+  
+  <script lang="ts" setup name="App">
+    import {RouterLink,RouterView} from 'vue-router'  
+  </script>
+  ```
+
+## 4.3. 【两个注意点】
+
+> 1. 路由组件通常存放在`pages` 或 `views`文件夹，一般组件通常存放在`components`文件夹。
+>
+> 2. 通过点击导航，视觉效果上“消失” 了的路由组件，默认是被**卸载**掉的，需要的时候再去**挂载**。
+
+## 4.4.【路由器工作模式】
+
+1. `history`模式
+
+   > 优点：`URL`更加美观，不带有`#`，更接近传统的网站`URL`。
+   >
+   > 缺点：后期项目上线，需要服务端配合处理路径问题，否则刷新会有`404`错误。
+   >
+   > ```js
+   > const router = createRouter({
+   > 	history:createWebHistory(), //history模式
+   > 	/******/
+   > })
+   > ```
+
+2. `hash`模式
+
+   > 优点：兼容性更好，因为不需要服务器端处理路径。
+   >
+   > 缺点：`URL`带有`#`不太美观，且在`SEO`优化方面相对较差。
+   >
+   > ```js
+   > const router = createRouter({
+   > 	history:createWebHashHistory(), //hash模式
+   > 	/******/
+   > })
+   > ```
+
+## 4.5. 【to的两种写法】
+
+```vue
+<!-- 第一种：to的字符串写法 -->
+<router-link active-class="active" to="/home">主页</router-link>
+
+<!-- 第二种：to的对象写法 -->
+<router-link active-class="active" :to="{path:'/home'}">Home</router-link>
+```
+
+## 4.6. 【命名路由】
+
+作用：可以简化路由跳转及传参（后面就讲）。
+
+给路由规则命名：
+
+```js
+routes:[
+  {
+    name:'zhuye',
+    path:'/home',
+    component:Home
+  },
+  {
+    name:'xinwen',
+    path:'/news',
+    component:News,
+  },
+  {
+    name:'guanyu',
+    path:'/about',
+    component:About
+  }
+]
+```
+
+跳转路由：
+
+```vue
+<!--简化前：需要写完整的路径（to的字符串写法） -->
+<router-link to="/news/detail">跳转</router-link>
+
+<!--简化后：直接通过名字跳转（to的对象写法配合name属性） -->
+<router-link :to="{name:'guanyu'}">跳转</router-link>
+```
+
+
+
+## 4.7. 【嵌套路由】
+
+1. 编写`News`的子路由：`Detail.vue`
+
+2. 配置路由规则，使用`children`配置项：
+
+   ```ts
+   const router = createRouter({
+     history:createWebHistory(),
+   	routes:[
+   		{
+   			name:'zhuye',
+   			path:'/home',
+   			component:Home
+   		},
+   		{
+   			name:'xinwen',
+   			path:'/news',
+   			component:News,
+   			children:[
+   				{
+   					name:'xiang',
+   					path:'detail',
+   					component:Detail
+   				}
+   			]
+   		},
+   		{
+   			name:'guanyu',
+   			path:'/about',
+   			component:About
+   		}
+   	]
+   })
+   export default router
+   ```
+
+3. 跳转路由（记得要加完整路径）：
+
+   ```vue
+   <router-link to="/news/detail">xxxx</router-link>
+   <!-- 或 -->
+   <router-link :to="{path:'/news/detail'}">xxxx</router-link>
+   ```
+
+4. 记得去`Home`组件中预留一个`<router-view>`
+
+   ```vue
+   <template>
+     <div class="news">
+       <nav class="news-list">
+         <RouterLink v-for="news in newsList" :key="news.id" :to="{path:'/news/detail'}">
+           {{news.name}}
+         </RouterLink>
+       </nav>
+       <div class="news-detail">
+         <RouterView/>
+       </div>
+     </div>
+   </template>
+   ```
+
+   
+
+## 4.8. 【路由传参】
+
+### query参数
+
+   1. 传递参数
+
+      ```vue
+      <!-- 跳转并携带query参数（to的字符串写法） -->
+      <router-link to="/news/detail?a=1&b=2&content=欢迎你">
+      	跳转
+      </router-link>
+      				
+      <!-- 跳转并携带query参数（to的对象写法） -->
+      <RouterLink 
+        :to="{
+          //name:'xiang', //用name也可以跳转
+          path:'/news/detail',
+          query:{
+            id:news.id,
+            title:news.title,
+            content:news.content
+          }
+        }"
+      >
+        {{news.title}}
+      </RouterLink>
+      ```
+
+   2. 接收参数：
+
+      ```js
+      import {useRoute} from 'vue-router'
+      const route = useRoute()
+      // 打印query参数
+      console.log(route.query)
+      ```
+
+
+### params参数
+
+   1. 传递参数
+
+      ```vue
+      <!-- 跳转并携带params参数（to的字符串写法） -->
+      <RouterLink :to="`/news/detail/001/新闻001/内容001`">{{news.title}}</RouterLink>
+      				
+      <!-- 跳转并携带params参数（to的对象写法） -->
+      <RouterLink 
+        :to="{
+          name:'xiang', //用name跳转
+          params:{
+            id:news.id,
+            title:news.title,
+            content:news.title
+          }
+        }"
+      >
+        {{news.title}}
+      </RouterLink>
+      ```
+
+   2. 接收参数：
+
+      ```js
+      import {useRoute} from 'vue-router'
+      const route = useRoute()
+      // 打印params参数
+      console.log(route.params)
+      ```
+
+> 备注1：传递`params`参数时，若使用`to`的对象写法，必须使用`name`配置项，不能用`path`。
+>
+> 备注2：传递`params`参数时，需要提前在规则中占位。
+
+## 4.9. 【路由的props配置】
+
+作用：让路由组件更方便的收到参数（可以将路由参数作为`props`传给组件）
+
+```js
+{
+	name:'xiang',
+	path:'detail/:id/:title/:content',
+	component:Detail,
+
+  // props的对象写法，作用：把对象中的每一组key-value作为props传给Detail组件
+  // props:{a:1,b:2,c:3}, 
+
+  // props的布尔值写法，作用：把收到了每一组params参数，作为props传给Detail组件
+  // props:true
+  
+  // props的函数写法，作用：把返回的对象中每一组key-value作为props传给Detail组件
+  props(route){
+    return route.query
+  }
+}
+```
+
+## 4.10. 【 replace属性】
+
+  1. 作用：控制路由跳转时操作浏览器历史记录的模式。
+
+  2. 浏览器的历史记录有两种写入方式：分别为```push```和```replace```：
+
+     - ```push```是追加历史记录（默认值）。
+     - `replace`是替换当前记录。
+
+  3. 开启`replace`模式：
+
+     ```vue
+     <RouterLink replace .......>News</RouterLink>
+     ```
+
+## 4.11. 【编程式导航】
+
+路由组件的两个重要的属性：`$route`和`$router`变成了两个`hooks`
+
+```js
+import {useRoute,useRouter} from 'vue-router'
+
+const route = useRoute()
+const router = useRouter()
+
+console.log(route.query)
+console.log(route.parmas)
+console.log(router.push)
+console.log(router.replace)
+```
+
+## 4.12. 【重定向】
+
+1. 作用：将特定的路径，重新定向到已有路由。
+
+2. 具体编码：
+
+   ```js
+   {
+       path:'/',
+       redirect:'/about'
+   }
+   ```
+
+
+
+# 五、 pinia
 
 
 
@@ -1426,7 +1844,126 @@ count.value = 10; // 视图自动更新
   })
 ```
 
+## 5.Vue中的暴露export是什么？有哪几种方式？
 
+### **什么是“暴露”？**
+
+想象你写了一个工具函数（比如计算价格），你想让其他文件也能用这个函数，这时候就需要“暴露”它。就像把工具放进一个公共工具箱，别人需要时就可以从工具箱里拿。
+
+**在代码里，“暴露”就是用 `export` 把东西分享出去，别人用 `import` 来使用它。**
+
+------
+
+### **两种暴露方式**
+
+#### 1️⃣ 默认暴露（`export default`）
+
+- **特点** ：一个文件只能有一个默认暴露，就像一个房间只能有一个“默认工具箱”。
+- **语法** ：
+
+```js
+// math.js（工具箱）
+const add = (a, b) => a + b;
+export default add; // 默认暴露
+```
+
+- **使用**：
+
+```js
+// 其他文件
+import myAdd from './math.js'; // 可以随便起名（比如 myAdd）
+console.log(myAdd(1, 2)); // 输出 3
+```
+
+#### 2️⃣ 命名暴露（`export`）
+
+- **特点** ：一个文件可以暴露多个工具，但需要用固定的名字，就像工具箱里的每个工具都有标签。
+- **语法** ：
+
+```js
+// tools.js（工具箱）
+export const knife = "🔪"; // 命名暴露
+export const hammer = "🔨"; // 命名暴露
+```
+
+- **使用** ：
+
+```js
+// 其他文件
+import { knife, hammer } from './tools.js'; // 必须用原名
+console.log(knife); // 输出 🔪
+```
+
+### **对比总结**
+
+|                  | 默认暴露 (`export default`) | 命名暴露 (`export`)          |
+| ---------------- | --------------------------- | ---------------------------- |
+| **数量**         | 一个文件只能有一个          | 一个文件可以有多个           |
+| **导入时的名字** | 可以随便起名                | 必须用原名（除非用`as`改名） |
+| **适用场景**     | 主要功能（如 Vue 组件）     | 多个工具函数/变量            |
+
+### **举个 Vue 的例子**
+
+假设你写了一个 Vue 组件：
+
+```js
+// MyComponent.vue
+export default { // 默认暴露
+  template: "<div>我是组件</div>"
+}
+```
+
+```js
+import MyComponent from './MyComponent.vue'; // 可以随便起名
+```
+
+### **小练习**
+
+1. 新建一个文件 `tools.js`，用命名暴露导出两个变量：`name = "小明"` 和 `age = 18`。
+2. 再新建一个文件 `app.js`，导入这两个变量并打印出来。
+
+**答案** ：
+
+```js
+// tools.js
+export const name = "小明";
+export const age = 18;
+
+// app.js
+import { name, age } from './tools.js';
+console.log(name, age); // 输出：小明 18
+```
+
+## 6. `export default router` 中的 `router` 需要和文件名一致吗？
+**A**: 
+**不需要！**
+
+- `router` 是变量名，与文件名无关。  
+- 文件名可以任意命名（如 `my-router.js`），只要导入路径正确即可。  
+- 示例：  
+  ```javascript
+  // 文件名：my-router.js
+  const abc = new VueRouter();
+  export default abc;
+  
+  // 导入时
+  import router from './my-router.js'; // 正常工作！
+
+## 7.一般组件和路由组件的区别？
+
+### **Vue 一般组件 vs 路由组件 对比表**
+
+| **对比项**       | **一般组件**                              | **路由组件**                               |
+| ---------------- | ----------------------------------------- | ------------------------------------------ |
+| **核心用途**     | 构建 UI 的可复用单元（如按钮、表格）      | 关联路由路径的页面级组件（如首页、详情页） |
+| **注册方式**     | 局部注册（`components: {}`）或全局注册    | 通过路由配置（`routes: [...]`）动态加载    |
+| **生命周期钩子** | 仅有自身生命周期（`created`/`mounted`等） | 支持路由专属钩子（如`beforeRouteEnter`）   |
+| **数据传递**     | 通过`props`或事件（`$emit`）              | 通过路由参数（`$route.params`）或状态管理  |
+| **复用性**       | 高（如全局按钮组件）                      | 低（通常为独立页面）                       |
+| **文件位置**     | `src/components/`目录                     | `src/views/`或`src/pages/`目录             |
+| **典型示例**     | `<Header/>`,`<Button/>`                   | `<Home/>`,`<UserDetail/>`                  |
+
+------
 
 
 
