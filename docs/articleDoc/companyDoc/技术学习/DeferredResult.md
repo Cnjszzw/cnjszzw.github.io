@@ -432,15 +432,17 @@ public class TaskController {
 
 ![image-20250417181011734](assets/image-20250417181011734.png)
 
+之后等待三秒钟，`TaskQueue`并没有处理，于是另一个线程`nio-8082-exec-7`就执行了DeferredResult设置的`onTimeout`和`onCompletion`的回调函数，时间是`2025-04-17 18:03:27.984`至`2025-04-17 18:03:32.029`
 
+![image-20250418091259258](assets/image-20250418091259258.png)
 
+之后即使`TaskExecute`执行力`setResult`也无济于事了
 
+![image-20250418091607714](assets/image-20250418091607714.png)
 
+当然也会有运气好的情况，刚刚调用请求，把Task放入Queue，就被Thread-3捕获处理了，并进行了setResult操作，之后另一个线程`nio-8082-exec-2`感知到后，立马返回了结果给前端(Postman)，并且触发了回调函数`onCompletion`
 
+![image-20250418091751894](assets/image-20250418091751894.png)
 
-
-
-
-
-
+![image-20250418091819961](assets/image-20250418091819961.png)
 
